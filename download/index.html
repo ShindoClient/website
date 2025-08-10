@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="ShindoClient">
+    <meta property="og:description" content="The website for ShindoClient">
+    <meta property="og:image" content="/assets/embed.png">
+    <meta property="og:url" content="https://shindoclient.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ShindoClient">
+    <meta name="twitter:description" content="The website for ShindoClient">
+    <meta name="twitter:image" content="/assets/embed.png">
+    <meta name="description" content="The website for ShindoClient">
+    <meta name="keywords" content="minecraft, glide client, Soar client">
+    <meta name="author" content="ShindoClient">
+    <meta name="theme-color" content="#6603fc">
+    <title>ShindoClient - Downloads</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="png" href="/assets/logo.png">
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="loader">
+            <img src="/assets/logo.png" alt="ShindoClient Logo">
+        </div>
+    </div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/logo.png" alt="ShindoClient Logo">
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/download">Download</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1>Downloads</h1>
+            <p>ShindoClient download for launchers that use the json format (Multimc support coming soon)</p>
+            <div class="button-group">
+                <a href="https://github.com/ShindoClient/Shindo-Client/releases/tag/latest" class="cta-button">Go to the download</a>
+            </div>
+            <a href="/multimc" class="minimal-link">Need the MultiMC instance instead?</a>
+            <iframe src="https://www.youtube.com/embed/Lrp3K2gj0nM" frameborder="0"></iframe>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Website by GlideClient Team | Edited by MikiDevAHM</p>
+            <p>Follow us: <a href="" target="_blank">Youtube</a> | <a href="https://github.com/ShindoClient/" target="_blank">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            loaderWrapper.classList.add('fade-out');
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
