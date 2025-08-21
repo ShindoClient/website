@@ -1,4 +1,4 @@
-# 🌌 ShindoClient Website
+# ShindoClient Website
 
 <p align="center">
   <img src="/src/assets/logo.png" alt="ShindoClient Logo" width="200" />
