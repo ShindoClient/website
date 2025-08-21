@@ -7,13 +7,11 @@ import path from 'path'
 // Ajuste o "base" quando for usar GitHub Pages
 // exemplo: base: '/nome-do-repo/'
 export default defineConfig({
-    base: '/',
     plugins: [vue(), tailwindcss()],
+    base: '/',
     resolve: {
-        alias: { '@': path.resolve(__dirname, './src') }
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+        },
     },
-    build: {
-        outDir: 'docs'
-    }
 })
-

@@ -39,7 +39,7 @@ onMounted(() => {
       if (entry.isIntersecting) {
         // usa índice do elemento no pai p/ stagger
         const index = Array.from(el.parentElement?.children || []).indexOf(el)
-        el.style.transitionDelay = `${Math.max(0, index) * 100}ms`
+        el.style.transitionDelay = `${Math.max(0, index) * 10}ms`
         el.classList.add('visible')
         io.unobserve(el)
       }
@@ -107,7 +107,7 @@ onMounted(() => {
 
 /* Levanta e dá leve zoom no hover */
 .card:hover {
-  transform: translateY(-5px) scale(1.02) !important;
+  transform: translateY(-5px) scale(1.05) !important;
   box-shadow: 0 20px 30px rgba(102, 3, 252, 0.15);
 }
 

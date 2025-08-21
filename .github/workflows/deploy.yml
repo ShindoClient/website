@@ -1,64 +1,40 @@
-name: Deploy to GitHub Pages
+# .github/workflows/deploy.yml
+name: 🚀 Deploy Website
 
 on:
   push:
-    branches: [ "master" ]
-  workflow_dispatch:
+    branches:
+      - master   # ajusta se sua branch principal for "master"
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: ⚡ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Setup pnpm
+      - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
-          run_install: false
+          run_install: true
 
-      - name: Install deps
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
+      - name: 🛠️ Build
         run: pnpm build
 
-      # Domínio custom: gera CNAME dentro do dist
-      - name: Add CNAME
-        run: echo shindoclient.com > dist/CNAME
-
-      # SPA fallback: deep links servem o bundle e o Vue Router mostra NotFound.vue
-      - name: Copy 404.html for SPA
-        run: cp dist/index.html dist/404.html
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
