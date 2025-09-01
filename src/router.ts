@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue'
 import Download from '@/views/Download.vue'
 import Discord from '@/views/Discord.vue'
 import NotFound from '@/views/NotFound.vue'
+import Doom from '@/views/Doom.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,6 +12,7 @@ const router = createRouter({
         { path: '/', component: Home },
         { path: '/download', component: Download },
         { path: '/discord',  component: Discord },
+        { path: '/doom',     component: Doom },
         { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
     ],
     scrollBehavior(to, from, savedPosition) {
