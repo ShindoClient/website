@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="loader-wrapper" :class="{ 'fade-out': fading }">
     <div class="loader">
-      <img src="../public/logo.png" alt="Loading..." />
+      <img src="@/public/logo.png" alt="Loading..." />
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--bg-color) 0%, #151522 100%);
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #151522 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@ onMounted(() => {
   position: absolute;
   width: 120%;
   height: 20px;
-  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
   bottom: -20px;
   filter: blur(10px);
   opacity: 0.3;
