@@ -31,9 +31,6 @@
   <a href="https://shindoclient.com">
     <img src="https://img.shields.io/badge/Website-shindoclient.com-ff4088?logo=google-chrome&logoColor=white&style=for-the-badge" alt="Website"/>
   </a>
-  <a href="https://github.com/ShindoClient/website/actions/workflows/deploy.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/ShindoClient/website/deploy.yml?style=for-the-badge" alt="Deploy"/>
-  </a>
 </p>
 
 ---
