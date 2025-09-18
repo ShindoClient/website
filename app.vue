@@ -5,7 +5,6 @@ import { Analytics } from '@vercel/analytics/nuxt'
 <template>
   <SpeedInsights/>
   <Analytics/>
-  <Loader />
   <div class="min-h-screen">
     <NavBar />
     <NuxtPage />

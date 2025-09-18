@@ -17,6 +17,7 @@ onMounted(() => {
     fading.value = true
     // remove do DOM após a transição
     setTimeout(() => (show.value = false), 400)
+    window.removeEventListener('load', done)
   }
   window.addEventListener('load', done)
 })
