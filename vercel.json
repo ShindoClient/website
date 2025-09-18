@@ -3,6 +3,5 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install",
   "framework": "nuxtjs",
-  "outputDirectory": ".output",
-  "ignoreCommand": "echo 'deploy'"
+  "outputDirectory": ".output"
 }
