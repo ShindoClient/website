@@ -21,3 +21,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.nuxt
+.output
+/dist
+/dist-ssr
+/.nuxt
+

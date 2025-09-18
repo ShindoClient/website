@@ -1,7 +1,7 @@
 # ShindoClient Website
 
 <p align="center">
-  <img src="/src/assets/logo.png" alt="ShindoClient Logo" width="200" />
+  <img src="/public/logo.png" alt="ShindoClient Logo" width="200" />
 </p>
 
 <p align="center">
@@ -16,8 +16,8 @@
   <a href="https://github.com/ShindoClient/website/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/ShindoClient/website?style=for-the-badge" alt="License"/>
   </a>
-  <a href="https://vuejs.org/">
-    <img src="https://img.shields.io/badge/Vue-3.x-42b883?logo=vue.js&logoColor=white&style=for-the-badge" alt="Vue.js"/>
+  <a href="https://nuxtjs.org/">
+    <img src="https://img.shields.io/badge/nuxt-3.x-42b883?logo=nuxt&logoColor=white&style=for-the-badge" alt="Vue.js"/>
   </a>
   <a href="https://vitejs.dev/">
     <img src="https://img.shields.io/badge/Vite-4.x-646CFF?logo=vite&logoColor=white&style=for-the-badge" alt="Vite"/>
@@ -52,29 +52,8 @@ O site inclui:
 
 ## 🛠️ Tecnologias
 - ⚡ [Vite](https://vitejs.dev/) para build e desenvolvimento rápido.
-- 🎨 [Vue 3](https://vuejs.org/) para interface reativa.
+- 🎨 [Nuxt 3](https://nuxtjs.org/) para interface reativa.
 - 💎 [TailwindCSS](https://tailwindcss.com/) para estilização moderna.
 - 🌍 [GitHub Pages](https://pages.github.com/) para deploy.
 
 ---
-
-## 🚀 Como rodar localmente
-
-```bash
-# Clone o repositório
-git clone https://github.com/ShindoClient/website.git
-
-# Entre no diretório
-cd website
-
-# Instale as dependências
-pnpm install
-
-# Rode em modo dev
-pnpm dev
-
-# Build para produção
-pnpm build
-
-# Pré-visualizar build
-pnpm preview

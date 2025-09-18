@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="loader-wrapper" :class="{ 'fade-out': fading }">
     <div class="loader">
-      <img src="@/assets/logo.png" alt="Loading..." />
+      <img src="../public/logo.png" alt="Loading..." />
     </div>
   </div>
 </template>

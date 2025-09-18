@@ -211,16 +211,16 @@ import { scrollToHash } from '@/scripts/scrollTo'
 const scrollFeatures = () => scrollToHash('#features')
 
 // 👇 importa TUDO por módulo – o Vite faz hash/cache-busting e funciona no GitHub Pages
-import icoDesktop from '@/assets/desktop.svg'
-import icoIncrease from '@/assets/increase.svg'
-import icoBranch  from '@/assets/branch.svg'
-import icoDiscord from '@/assets/discord.svg'
-import icoRocket  from '@/assets/rocket.svg'
+import icoDesktop from 'public/desktop.svg'
+import icoIncrease from 'public/increase.svg'
+import icoBranch  from 'public/branch.svg'
+import icoDiscord from 'public/discord.svg'
+import icoRocket  from 'public/rocket.svg'
 
-import shotMenu        from '@/assets/screenshots/menu.webp'
-import shotHuds        from '@/assets/screenshots/huds.webp'
-import shotBackgrounds from '@/assets/screenshots/backgrounds.webp'
-import shotModmenu     from '@/assets/screenshots/modmenu.webp'
+import shotMenu        from 'public/screenshots/menu.webp'
+import shotHuds        from 'public/screenshots/huds.webp'
+import shotBackgrounds from 'public/screenshots/backgrounds.webp'
+import shotModmenu     from 'public/screenshots/modmenu.webp'
 
 const ico = { desktop: icoDesktop, increase: icoIncrease, branch: icoBranch, discord: icoDiscord, rocket: icoRocket }
 const shots = { menu: shotMenu, huds: shotHuds, backgrounds: shotBackgrounds, modmenu: shotModmenu }
@@ -252,4 +252,48 @@ function toggleFaq(i: number, el?: HTMLElement){
     }, 200)
   }
 }
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "ShindoClient",
+            "description": "An enhanced open-source Minecraft 1.8.9 PvP client with cross-platform support...",
+            "url": "https://shindoclient.com",
+            "downloadUrl": "https://shindoclient.com/download",
+            "applicationCategory": ["GameApplication", "EntertainmentApplication"],
+            "operatingSystem": ["Windows","macOS","Linux"],
+            "softwareVersion": "5.1.08",
+            "datePublished": "2024-11-21",
+            "dateModified": "2025-08-03",
+            "screenshot": [
+              "https://shindoclient.com/screenshots/menu.webp",
+              "https://shindoclient.com/screenshots/huds.webp",
+              "https://shindoclient.com/screenshots/backgrounds.webp"
+            ],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          },
+          {
+            "@type": "Organization",
+            "name": "ShindoClient",
+            "url": "https://shindoclient.com",
+            "logo": "https://shindoclient.com/logo.png"
+          },
+          {
+            "@type": "WebSite",
+            "name": "ShindoClient",
+            "url": "https://shindoclient.com",
+            "description": "Download ShindoClient - Enhanced Minecraft 1.8.9 PvP Client",
+            "inLanguage": "en-GB"
+          }
+        ]
+      })
+    }
+  ]
+})
 </script>

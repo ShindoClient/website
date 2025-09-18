@@ -26,7 +26,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import logo from '@/assets/logo.png'
+import logo from 'public/logo.png'
+import {scrollToHash} from "@/scripts/scrollTo";
 
 const router = useRouter()
 const route  = useRoute()
