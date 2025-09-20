@@ -8,7 +8,6 @@
           Download Version File
         </a>
       </div>
-      <RouterLink to="/multimc" class="minimal-link">Need the MultiMC instance instead?</RouterLink>
     </section>
   </main>
 </template>
