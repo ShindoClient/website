@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <main class="px-4 pb-24 pt-12">
     <div class="mx-auto max-w-[900px] space-y-12">
       <div class="glass-panel overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-10 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.9)]">
@@ -21,6 +22,16 @@
             </NuxtLink>
           </div>
         </div>
+=======
+  <main class="main">
+    <section class="hero">
+      <h1>Downloads</h1>
+      <p>ShindoClient download for launchers that use the json format (MultiMC support coming soon)</p>
+      <div class="button-group">
+        <a href="https://github.com/ShindoClient/Shindo-Client/releases/latest" class="cta-button">
+          Download Version File
+        </a>
+>>>>>>> 501004efb6fbcfbee546c71004ce81fc5dd89a4a
       </div>
 
       <div class="grid gap-5 md:grid-cols-2">
