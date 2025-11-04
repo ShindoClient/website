@@ -74,8 +74,13 @@
         </div>
         <div class="relative">
           <div class="pointer-events-none absolute inset-0 -translate-y-6 rounded-[36px] bg-panel-glow blur-3xl"></div>
-          <div class="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/10 shadow-glow">
-            <img :src="heroMenu" alt="ShindoClient launcher preview" class="h-full w-full object-cover" loading="lazy" />
+          <div class="relative flex items-center justify-center overflow-hidden rounded-[32px] border border-white/10 bg-white/10 py-12 shadow-glow sm:py-16">
+            <img
+              src="/logo.png"
+              alt="ShindoClient logo"
+              class="h-32 w-auto sm:h-40"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -89,7 +94,7 @@
             Built like a pro launcher. Tuned for open-source experimentation.
           </h2>
           <p class="mx-auto max-w-2xl text-base text-white/65">
-            Every subsystem was rebuilt for stability, security, and scalability—from secure Supabase presence syncing to a modular client-side architecture tuned for minimal input latency.
+            Every subsystem was rebuilt for stability, security, and scalability—from secure FireBase presence syncing to a modular client-side architecture tuned for minimal input latency.
           </p>
         </div>
         <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -127,7 +132,7 @@
             <span class="section-label bg-white/10 text-white/60">Live Status</span>
             <h2 class="mt-4 font-display text-3xl text-white sm:text-4xl">Gateway availability in real time</h2>
             <p class="mt-3 max-w-2xl text-sm text-white/60">
-              Tokenised WebSocket auth backed by Supabase ensures every session is secured. Role sync, presence and broadcast updates are streamed with automatic re-authentication on account swaps.
+              Tokenised WebSocket auth backed by FireBase ensures every session is secured. Role sync, presence and broadcast updates are streamed with automatic re-authentication on account swaps.
             </p>
           </div>
           <div class="flex items-center gap-3 text-xs text-white/50">
@@ -142,19 +147,19 @@
         </div>
         <div class="mt-10 grid gap-6 md:grid-cols-[minmax(0,1fr)_340px]">
           <div class="grid gap-6 sm:grid-cols-2">
-            <div class="glass-panel flex h-full flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="glass-panel glass-panel--static flex h-full flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
               <p class="text-xs uppercase tracking-[0.35em] text-white/40">Online Presence</p>
               <p class="text-4xl font-semibold text-white">{{ playersOnline.toString().padStart(2, '0') }}</p>
               <p class="text-sm text-white/50">Players currently authenticated through the gateway.</p>
             </div>
-            <div class="glass-panel flex h-full flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="glass-panel glass-panel--static flex h-full flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
               <p class="text-xs uppercase tracking-[0.35em] text-white/40">Latency</p>
               <p class="text-4xl font-semibold text-white">
                 {{ latencyMs ? `${Math.round(latencyMs)} ms` : '—' }}
               </p>
               <p class="text-sm text-white/50">Round-trip measured from Render edge to Minecraft services.</p>
             </div>
-            <div class="glass-panel sm:col-span-2 flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="glass-panel glass-panel--static sm:col-span-2 flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
               <p class="text-xs uppercase tracking-[0.35em] text-white/40">Authentication Stack</p>
               <ul class="space-y-2 text-sm text-white/55">
                 <li v-for="item in statusHighlights" :key="item" class="flex items-start gap-2">
@@ -164,7 +169,7 @@
               </ul>
             </div>
           </div>
-          <div class="glass-panel relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="glass-panel glass-panel--static glass-panel--loose relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6">
             <div class="pointer-events-none absolute inset-x-6 top-0 h-32 bg-panel-glow"></div>
             <h3 class="text-base font-semibold text-white">Deployment Targets</h3>
             <p class="mt-2 text-sm text-white/55">
@@ -307,16 +312,20 @@
           <div
             v-for="(faq, index) in faqs"
             :key="faq.question"
-            class="glass-panel rounded-[28px] border border-white/10 bg-white/5 p-6"
+            class="glass-panel glass-panel--static glass-panel--loose rounded-[28px] border border-white/10 bg-white/5 p-6 transition-colors hover:border-white/20"
           >
             <button
               type="button"
               class="flex w-full items-start justify-between gap-4 text-left"
+              :aria-expanded="isFaqOpen(index)"
+              :aria-controls="`faq-panel-${index}`"
               @click="toggleFaq(index)"
+              @keydown.enter.prevent="toggleFaq(index)"
+              @keydown.space.prevent="toggleFaq(index)"
             >
               <span class="text-base font-semibold text-white">{{ faq.question }}</span>
               <span class="mt-1 text-white/40">
-                <svg v-if="openFaq === index" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <svg v-if="isFaqOpen(index)" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <svg v-else class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -325,16 +334,20 @@
               </span>
             </button>
             <Transition
-              enter-active-class="transition duration-200 ease-out"
+              enter-active-class="duration-300 transition-all ease-out"
               enter-from-class="max-h-0 opacity-0"
-              enter-to-class="max-h-96 opacity-100"
-              leave-active-class="transition duration-150 ease-in"
-              leave-from-class="max-h-96 opacity-100"
+              enter-to-class="max-h-[320px] opacity-100"
+              leave-active-class="duration-200 transition-all ease-in"
+              leave-from-class="max-h-[320px] opacity-100"
               leave-to-class="max-h-0 opacity-0"
             >
-              <p v-if="openFaq === index" class="mt-4 text-sm text-white/60">
+              <div
+                v-if="isFaqOpen(index)"
+                :id="`faq-panel-${index}`"
+                class="mt-4 max-h-[320px] overflow-hidden text-sm text-white/60"
+              >
                 {{ faq.answer }}
-              </p>
+              </div>
             </Transition>
           </div>
         </div>
@@ -424,10 +437,10 @@ type FeatureHighlight = {
 const featureHighlights = [
   {
     title: 'Secure Auth Pipeline',
-    description: 'Supabase-backed JWT sessions, token refresh on account swap and instant invalidation on ban events.',
+    description: 'FireBase-backed JWT sessions, token refresh on account swap and instant invalidation on ban events.',
     icon: 'M12 2l7 4v6c0 5-3.5 10-7 11-3.5-1-7-6-7-11V6l7-4z',
     points: [
-      'JWT sessions backed by Supabase with instant revocation on flag events.',
+      'JWT sessions backed by FireBase with instant revocation on flag events.',
       'Automatic refresh when players switch Microsoft or Mojang accounts.'
     ]
   },
@@ -459,15 +472,6 @@ const featureHighlights = [
     ]
   },
   {
-    title: 'Plugin-ready Gateway',
-    description: 'Future-proof architecture to drop in punishment feeds, tournament modules or voice relay without rewrites.',
-    icon: 'M12 6v6l4 2m6-2a10 10 0 11-4.05-7.94',
-    points: [
-      'Context-aware plugin sandbox for punishment, tournaments and telemetry.',
-      'Schema-first APIs keep third-party integrations version safe.'
-    ]
-  },
-  {
     title: 'Open-source Transparency',
     description: 'Auditable code, documented RFCs and a CDN pipeline for ultra-lightweight resource distribution.',
     icon: 'M21 21l-6-6m2-3a7 7 0 11-14 0 7 7 0 0114 0z',
@@ -479,6 +483,13 @@ const featureHighlights = [
 ] satisfies FeatureHighlight[]
 
 const showcaseSlides = [
+  {
+    title: 'Launcher Home',
+    description:
+      'The redesigned landing screen blends premium gradients with actionable CTAs, keeping download links and presence indicators one glance away.',
+    image: heroMenu,
+    alt: 'ShindoClient launcher home screen'
+  },
   {
     title: 'Modular HUD Editor',
     description:
@@ -504,7 +515,7 @@ const showcaseSlides = [
 
 const statusHighlights = [
   'Token chaining ensures Microsoft, Mojang and Offline accounts refresh without client restarts.',
-  'Supabase presence events trigger automatic role syncs into the Java client.',
+  'FireBase presence events trigger automatic role syncs into the Java client.',
   'Render-ready Docker image with non-root user, capability drop and health probes.'
 ]
 
@@ -532,14 +543,9 @@ const faqs = [
       'Yes. ShindoClient focuses on performance optimisations, QoL modules and visuals. No unfair combat advantages are shipped by default and key systems are hot-pluggable to comply with server rules.'
   },
   {
-    question: 'Can I build my own modules on top?',
-    answer:
-      'Absolutely. The client is open-source under a permissive license. The new plugin scaffolding makes it straightforward to inject tools, overlays or integrations without forking the core.'
-  },
-  {
     question: 'What is the roadmap for 2025?',
     answer:
-      'Upcoming releases include deeper Supabase analytics, profile cloud sync and an optional companion mobile app that sends push alerts when tournaments go live or friends hop in-game.'
+      'Upcoming releases include deeper FireBase analytics, profile cloud sync and an optional companion mobile app that sends push alerts when tournaments go live or friends hop in-game.'
   },
   {
     question: 'Does the launcher auto-update?',
@@ -558,6 +564,8 @@ const openFaq = ref<number | null>(0)
 const toggleFaq = (index: number) => {
   openFaq.value = openFaq.value === index ? null : index
 }
+
+const isFaqOpen = (index: number) => openFaq.value === index
 
 const formatRelative = (timestamp: string | number | null) => {
   if (!timestamp) return ''
@@ -612,10 +620,10 @@ onBeforeUnmount(stopCarousel)
 useSeoMeta({
   title: 'ShindoClient — Modern Minecraft 1.8.9 Client',
   description:
-    'Experience ShindoClient, a AAA-inspired Minecraft 1.8.9 client with secure Supabase auth, modular HUD, performance upgrades and real-time status monitoring.',
+    'Experience ShindoClient, a AAA-inspired Minecraft 1.8.9 client with secure FireBase auth, modular HUD, performance upgrades and real-time status monitoring.',
   ogTitle: 'ShindoClient — Modern Minecraft 1.8.9 Client',
   ogDescription:
-    'Secure Supabase auth, modular UI and AAA-grade visuals. Download ShindoClient for a premium 1.8.9 experience.',
+    'Secure FireBase auth, modular UI and AAA-grade visuals. Download ShindoClient for a premium 1.8.9 experience.',
   ogImage: '/embed.png',
   ogUrl: 'https://shindoclient.com',
   twitterCard: 'summary_large_image'
