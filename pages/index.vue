@@ -361,32 +361,56 @@ const featureHighlights = [
   {
     title: 'Secure Auth Pipeline',
     description: 'Supabase-backed JWT sessions, token refresh on account swap and instant invalidation on ban events.',
-    icon: 'M12 2l7 4v6c0 5-3.5 10-7 11-3.5-1-7-6-7-11V6l7-4z'
+    icon: 'M12 2l7 4v6c0 5-3.5 10-7 11-3.5-1-7-6-7-11V6l7-4z',
+    points: [
+      'JWT sessions backed by Supabase with instant revocation on flag events.',
+      'Automatic refresh when players switch Microsoft or Mojang accounts.'
+    ]
   },
   {
     title: 'Modular HUD System',
     description: 'Drag-and-drop layout editor with profile presets, nano animations and shader-safe rendering.',
-    icon: 'M4 7l8-4 8 4-8 4-8-4zm0 6l8 4 8-4m-8 4v5'
+    icon: 'M4 7l8-4 8 4-8 4-8-4zm0 6l8 4 8-4m-8 4v5',
+    points: [
+      'Profile-based layouts with per-scene persistence.',
+      'Shader-friendly rendering path to avoid ghosting on custom packs.'
+    ]
   },
   {
     title: 'Presence Intelligence',
     description: 'Realtime WebSocket presence with role sync, last-seen tracking and admin dashboards on Render.',
-    icon: 'M16 17a4 4 0 10-8 0 4 4 0 008 0z M3 20a6 6 0 0112 0v1H3v-1z M12 3a4 4 0 110 8 4 4 0 010-8z'
+    icon: 'M16 17a4 4 0 10-8 0 4 4 0 008 0z M3 20a6 6 0 0112 0v1H3v-1z M12 3a4 4 0 110 8 4 4 0 010-8z',
+    points: [
+      'Live Gateway dashboards stream status and presence to staff.',
+      'Last-seen tracking feeds moderation insights in real time.'
+    ]
   },
   {
     title: 'Performance Toolkit',
     description: 'Async chunk streaming, particle throttling and auto mod priority to keep FPS spikes under control.',
-    icon: 'M3 12h18M12 3v18m-7-7 14-14M5 19l14-14'
+    icon: 'M3 12h18M12 3v18m-7-7 14-14M5 19l14-14',
+    points: [
+      'Adaptive FPS profile automatically tunes chunk streaming and particles.',
+      'Module priority system keeps critical combat mods responsive.'
+    ]
   },
   {
     title: 'Plugin-ready Gateway',
     description: 'Future-proof architecture to drop in punishment feeds, tournament modules or voice relay without rewrites.',
-    icon: 'M12 6v6l4 2m6-2a10 10 0 11-4.05-7.94'
+    icon: 'M12 6v6l4 2m6-2a10 10 0 11-4.05-7.94',
+    points: [
+      'Context-aware plugin sandbox for punishment, tournaments and telemetry.',
+      'Schema-first APIs keep third-party integrations version safe.'
+    ]
   },
   {
     title: 'Open-source Transparency',
     description: 'Auditable code, documented RFCs and a CDN pipeline for ultra-lightweight resource distribution.',
-    icon: 'M21 21l-6-6m2-3a7 7 0 11-14 0 7 7 0 0114 0z'
+    icon: 'M21 21l-6-6m2-3a7 7 0 11-14 0 7 7 0 0114 0z',
+    points: [
+      'Active RFC process maps upcoming features before they ship.',
+      'Global CDN delivery keeps manifest downloads under 200 ms worldwide.'
+    ]
   }
 ] satisfies FeatureHighlight[]
 
