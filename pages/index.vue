@@ -4,7 +4,7 @@
       <div class="mx-auto grid max-w-[1120px] gap-12 rounded-[40px] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl md:grid-cols-[minmax(0,1fr)_420px] md:p-12">
         <div class="flex flex-col gap-8">
           <div class="flex flex-wrap items-center gap-3">
-            <span class="section-label bg-white/10 text-white/60">Version 5.0</span>
+            <span class="section-label bg-white/10 text-white/60">{{ versionLabel }}</span>
             <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/50">
               1.8.9
             </span>
@@ -193,17 +193,75 @@
             From the animated launcher dashboard to modular HUD editing, every element is engineered to match modern AAA Minecraft clients—while remaining fully customizable.
           </p>
         </div>
-        <div class="grid gap-4 md:grid-cols-2">
-          <div class="glass-panel overflow-hidden rounded-[32px] border border-white/10 bg-white/5">
-            <img :src="heroHud" alt="Modular HUD showcase" class="h-full w-full object-cover" loading="lazy" />
+        <div
+          class="glass-panel glass-panel--static relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-0 shadow-[0_45px_120px_-70px_rgba(10,18,46,0.9)]"
+          @mouseenter="stopCarousel"
+          @mouseleave="startCarousel"
+          role="region"
+          aria-label="Visual showcase carousel"
+        >
+          <div class="relative">
+            <div
+              class="flex transition-transform duration-500 ease-out"
+              :style="{ transform: `translateX(-${activeSlide * 100}%)` }"
+            >
+              <article
+                v-for="(slide, index) in showcaseSlides"
+                :key="slide.title"
+                class="flex w-full shrink-0 flex-col overflow-hidden md:flex-row"
+                role="group"
+                :aria-roledescription="'slide'"
+                :aria-label="`${index + 1} of ${showcaseSlides.length}`"
+              >
+                <div class="relative w-full md:w-2/3">
+                  <img
+                    :src="slide.image"
+                    :alt="slide.alt"
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex w-full flex-col justify-center gap-3 p-6 md:w-1/3 md:p-8">
+                  <span class="text-xs uppercase tracking-[0.35em] text-white/35">Showcase {{ index + 1 }}</span>
+                  <h3 class="text-xl font-semibold text-white md:text-2xl">{{ slide.title }}</h3>
+                  <p class="text-sm text-white/65">
+                    {{ slide.description }}
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <button
+              type="button"
+              class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition hover:border-white/40 hover:bg-black/50"
+              aria-label="Show previous slide"
+              @click="prevSlide(); restartCarousel()"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition hover:border-white/40 hover:bg-black/50"
+              aria-label="Show next slide"
+              @click="nextSlide(); restartCarousel()"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
           </div>
-          <div class="grid gap-4">
-            <div class="glass-panel overflow-hidden rounded-[32px] border border-white/10 bg-white/5">
-              <img :src="heroMods" alt="Module browser" class="h-full w-full object-cover" loading="lazy" />
-            </div>
-            <div class="glass-panel overflow-hidden rounded-[32px] border border-white/10 bg-white/5">
-              <img :src="heroBackgrounds" alt="Dynamic backgrounds" class="h-full w-full object-cover" loading="lazy" />
-            </div>
+          <div class="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2">
+            <button
+              v-for="(_, index) in showcaseSlides"
+              :key="`dot-${index}`"
+              type="button"
+              class="h-2.5 w-2.5 rounded-full transition"
+              :class="activeSlide === index ? 'bg-white' : 'bg-white/25 hover:bg-white/40'"
+              :aria-label="`Go to slide ${index + 1}`"
+              @click="setSlide(index); restartCarousel()"
+            />
           </div>
         </div>
       </div>
@@ -286,17 +344,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import heroMenu from 'public/screenshots/menu.webp'
 import heroHud from 'public/screenshots/huds.webp'
 import heroMods from 'public/screenshots/modmenu.webp'
 import heroBackgrounds from 'public/screenshots/backgrounds.webp'
 import { scrollToHash } from '@/scripts/scrollTo'
+import { useClientMeta } from '@/composables/useClientMeta'
 
 const runtimeConfig = useRuntimeConfig()
 const statusEndpoint = runtimeConfig.public.statusEndpoint as string | undefined
-const downloadUrl = runtimeConfig.public.downloadUrl as string
-const discordUrl = runtimeConfig.public.discordUrl as string
+const { data: clientMeta } = useClientMeta()
+
+const downloadUrl = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
+const discordUrl = computed(() => clientMeta.value?.discord ?? (runtimeConfig.public.discordUrl as string))
+const versionLabel = computed(() =>
+  clientMeta.value?.latestversionstring ? `Version ${clientMeta.value.latestversionstring}` : 'Version 5.0'
+)
 
 const defaultStatus = {
   health: { ok: false },
@@ -414,6 +478,30 @@ const featureHighlights = [
   }
 ] satisfies FeatureHighlight[]
 
+const showcaseSlides = [
+  {
+    title: 'Modular HUD Editor',
+    description:
+      'Drag-and-drop widgets, precision grid snapping and animation presets let you tailor combat, scoreboards and utilities in seconds.',
+    image: heroHud,
+    alt: 'Modular HUD showcase'
+  },
+  {
+    title: 'Module Browser',
+    description:
+      'Filter, favourite and stage modules with instant search. Profiles keep competitive, casual and recording setups one click away.',
+    image: heroMods,
+    alt: 'Module browser interface'
+  },
+  {
+    title: 'Dynamic Backgrounds',
+    description:
+      'Adaptive gradients and cinematic renders that react to presence and account state for a premium launcher feel.',
+    image: heroBackgrounds,
+    alt: 'Dynamic launcher backgrounds'
+  }
+] as const
+
 const statusHighlights = [
   'Token chaining ensures Microsoft, Mojang and Offline accounts refresh without client restarts.',
   'Supabase presence events trigger automatic role syncs into the Java client.',
@@ -435,19 +523,33 @@ const upgradeSteps = [
 const faqs = [
   {
     question: 'How does the new authentication system work?',
-    answer: 'The Java client requests a signed JWT from the REST session endpoint, then authenticates via secure WebSocket. Tokens are short-lived, revoked on demand and refreshed automatically when you swap accounts.'
+    answer:
+      'The Java client requests a signed JWT from the REST session endpoint, then authenticates via secure WebSocket. Tokens are short-lived, revoked on demand and refreshed automatically when you swap accounts.'
   },
   {
     question: 'Is ShindoClient legal on major networks?',
-    answer: 'Yes. ShindoClient focuses on performance optimisations, QoL modules and visuals. No unfair combat advantages are shipped by default and key systems are hot-pluggable to comply with server rules.'
+    answer:
+      'Yes. ShindoClient focuses on performance optimisations, QoL modules and visuals. No unfair combat advantages are shipped by default and key systems are hot-pluggable to comply with server rules.'
   },
   {
     question: 'Can I build my own modules on top?',
-    answer: 'Absolutely. The client is open-source under a permissive license. The new plugin scaffolding makes it straightforward to inject tools, overlays or integrations without forking the core.'
+    answer:
+      'Absolutely. The client is open-source under a permissive license. The new plugin scaffolding makes it straightforward to inject tools, overlays or integrations without forking the core.'
   },
   {
     question: 'What is the roadmap for 2025?',
-    answer: 'Upcoming releases include deeper Supabase analytics, profile cloud sync and an optional companion mobile app that sends push alerts when tournaments go live or friends hop in-game.'
+    answer:
+      'Upcoming releases include deeper Supabase analytics, profile cloud sync and an optional companion mobile app that sends push alerts when tournaments go live or friends hop in-game.'
+  },
+  {
+    question: 'Does the launcher auto-update?',
+    answer:
+      'Manifest updates are pulled on launch and on-demand from GitHub. Manual refresh controls ensure you can stay on a specific build or jump forward as soon as a new release lands.'
+  },
+  {
+    question: 'Where can I get support or report issues?',
+    answer:
+      'Hop into the Discord to share logs, request features or escalate bugs directly with maintainers. GitHub issues stay open for reproducible defects and community contributions.'
   }
 ]
 
@@ -471,6 +573,41 @@ const formatRelative = (timestamp: string | number | null) => {
 }
 
 const scrollToSection = (hash: string) => scrollToHash(hash)
+
+const activeSlide = ref(0)
+const totalSlides = computed(() => showcaseSlides.length)
+const AUTOPLAY_INTERVAL = 7000
+let carouselTimer: ReturnType<typeof setInterval> | null = null
+
+const setSlide = (index: number) => {
+  if (!totalSlides.value) return
+  const bounded = ((index % totalSlides.value) + totalSlides.value) % totalSlides.value
+  activeSlide.value = bounded
+}
+
+const nextSlide = () => setSlide(activeSlide.value + 1)
+const prevSlide = () => setSlide(activeSlide.value - 1)
+
+const startCarousel = () => {
+  if (carouselTimer || totalSlides.value <= 1) return
+  carouselTimer = setInterval(() => {
+    activeSlide.value = (activeSlide.value + 1) % totalSlides.value
+  }, AUTOPLAY_INTERVAL)
+}
+
+const stopCarousel = () => {
+  if (!carouselTimer) return
+  clearInterval(carouselTimer)
+  carouselTimer = null
+}
+
+const restartCarousel = () => {
+  stopCarousel()
+  startCarousel()
+}
+
+onMounted(startCarousel)
+onBeforeUnmount(stopCarousel)
 
 useSeoMeta({
   title: 'ShindoClient — Modern Minecraft 1.8.9 Client',

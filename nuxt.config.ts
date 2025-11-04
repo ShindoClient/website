@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
+            clientMetaUrl: process.env.NUXT_PUBLIC_CLIENT_META_URL || 'https://shindoclient.github.io/data/meta/client.json',
             statusEndpoint: process.env.NUXT_PUBLIC_STATUS_ENDPOINT || 'https://status.shindoclient.com/api/summary',
             downloadUrl: process.env.NUXT_PUBLIC_DOWNLOAD_URL || 'https://github.com/ShindoClient/Shindo-Client/releases/latest',
             discordUrl: process.env.NUXT_PUBLIC_DISCORD_URL || 'https://shindoclient.com/discord'

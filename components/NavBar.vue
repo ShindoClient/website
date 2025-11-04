@@ -1,11 +1,16 @@
 <template>
   <header class="site-header fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5 md:pt-6">
     <nav
-      class="glass-panel flex w-full max-w-[1120px] items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-300 hover:border-white/15 md:px-7"
+      class="glass-panel glass-panel--static flex w-full max-w-[1120px] items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-300 hover:border-white/15 md:px-7"
     >
       <NuxtLink to="/" class="flex items-center gap-3 text-sm font-semibold tracking-wide text-white/80 transition hover:text-white">
         <img :src="logo" alt="ShindoClient logo" class="h-9 w-9 rounded-xl border border-white/10 bg-white/10 p-1.5" />
-        <span class="font-display text-base uppercase tracking-[0.3em] text-white/70">ShindoClient</span>
+        <div class="flex flex-col leading-tight">
+          <span class="font-display text-base uppercase tracking-[0.3em] text-white/70">ShindoClient</span>
+          <span v-if="versionLabel" class="text-[10px] font-medium uppercase tracking-[0.35em] text-white/40">
+            {{ versionLabel }}
+          </span>
+        </div>
       </NuxtLink>
 
       <div class="hidden items-center gap-1 text-sm font-medium text-white/70 md:flex">
@@ -25,7 +30,7 @@
           Download
         </NuxtLink>
         <NuxtLink
-          :to="discordUrl"
+          :to="discordHref"
           target="_blank"
           class="button-primary text-xs uppercase tracking-widest"
         >
@@ -97,7 +102,7 @@
             Download
           </NuxtLink>
           <NuxtLink
-            :to="discordUrl"
+            :to="discordHref"
             target="_blank"
             class="button-primary w-full justify-center text-xs uppercase tracking-[0.25em]"
             @click="close"
@@ -111,16 +116,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import logo from 'public/logo.png'
 import { scrollToHash } from '@/scripts/scrollTo'
+import { useClientMeta } from '@/composables/useClientMeta'
 
 const menu = ref(false)
 const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()
-const discordUrl = config.public.discordUrl
+const { data: clientMeta } = useClientMeta()
+
+const discordHref = computed(() => clientMeta.value?.discord ?? config.public.discordUrl)
+const versionLabel = computed(() => (clientMeta.value?.latestversionstring ? `Version ${clientMeta.value.latestversionstring}` : null))
 
 const primaryLinks = [
   { label: 'Overview', hash: '#hero' },

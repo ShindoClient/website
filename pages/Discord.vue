@@ -6,7 +6,7 @@
       <p class="text-sm text-white/60">
         You are being redirected to our Discord server. If the redirect does not happen automatically, use the button below.
       </p>
-      <a :href="discordUrl" class="button-primary justify-center" target="_blank" rel="noopener">
+      <a :href="discordHref" class="button-primary justify-center" target="_blank" rel="noopener">
         Open Discord
       </a>
     </div>
@@ -14,14 +14,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useClientMeta } from '@/composables/useClientMeta'
 
 const runtimeConfig = useRuntimeConfig()
-const discordUrl = runtimeConfig.public.discordUrl as string
+const { data: clientMeta } = useClientMeta()
+const discordHref = computed(() => clientMeta.value?.discord ?? (runtimeConfig.public.discordUrl as string))
 
 onMounted(() => {
   const timer = window.setTimeout(() => {
-    window.location.href = discordUrl
+    window.location.href = discordHref.value
   }, 600)
 
   window.addEventListener('beforeunload', () => clearTimeout(timer))

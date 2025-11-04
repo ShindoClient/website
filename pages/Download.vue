@@ -13,13 +13,16 @@
             authentication stack.
           </p>
           <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a :href="downloadUrl" target="_blank" class="button-primary w-full justify-center sm:w-auto">
+            <a :href="downloadHref" target="_blank" class="button-primary w-full justify-center sm:w-auto">
               Download Manifest
             </a>
             <NuxtLink to="/discord" class="button-ghost w-full justify-center border-white/20 bg-white/10 hover:border-white/30 sm:w-auto">
               Release Announcements
             </NuxtLink>
           </div>
+          <p v-if="latestVersion" class="text-xs uppercase tracking-[0.35em] text-white/35">
+            Current Version · {{ latestVersion }}
+          </p>
         </div>
       </div>
 
@@ -56,6 +59,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useClientMeta } from '@/composables/useClientMeta'
+
 const runtimeConfig = useRuntimeConfig()
-const downloadUrl = runtimeConfig.public.downloadUrl as string
+const { data: clientMeta } = useClientMeta()
+
+const downloadHref = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
+const latestVersion = computed(() => clientMeta.value?.latestversionstring ?? null)
 </script>
