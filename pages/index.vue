@@ -634,10 +634,10 @@ useHead({
             description:
               'A modern, open-source Minecraft 1.8.9 PvP client with AAA-inspired design, security-focused architecture and cross-platform support.',
             url: 'https://shindoclient.com',
-            downloadUrl: downloadUrl,
+            downloadUrl: downloadUrl.value,
             applicationCategory: ['GameApplication', 'EntertainmentApplication'],
             operatingSystem: ['Windows', 'macOS', 'Linux'],
-            softwareVersion: '5.0.0',
+            softwareVersion: clientMeta.value?.latestversionstring ?? '5.0.0',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
             screenshot: [
               'https://shindoclient.com/screenshots/menu.webp',
