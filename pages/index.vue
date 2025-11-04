@@ -302,7 +302,8 @@ const defaultStatus = {
   health: { ok: false },
   players: { count: 0 },
   latencyMs: null,
-  updatedAt: null
+  updatedAt: null,
+  timestamp: null
 }
 
 const {
@@ -349,6 +350,13 @@ const metrics = computed(() => [
   }
 ])
 
+type FeatureHighlight = {
+  title: string
+  description: string
+  icon: string
+  points?: string[]
+}
+
 const featureHighlights = [
   {
     title: 'Secure Auth Pipeline',
@@ -380,7 +388,7 @@ const featureHighlights = [
     description: 'Auditable code, documented RFCs and a CDN pipeline for ultra-lightweight resource distribution.',
     icon: 'M21 21l-6-6m2-3a7 7 0 11-14 0 7 7 0 0114 0z'
   }
-] as const
+] satisfies FeatureHighlight[]
 
 const statusHighlights = [
   'Token chaining ensures Microsoft, Mojang and Offline accounts refresh without client restarts.',
