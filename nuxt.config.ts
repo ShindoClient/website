@@ -5,6 +5,12 @@ export default defineNuxtConfig({
         shim: false
     },
     css: ['~/assets/css/tailwind.css'],
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {}
+        }
+    },
     runtimeConfig: {
         public: {
             statusEndpoint: process.env.NUXT_PUBLIC_STATUS_ENDPOINT || 'https://status.shindoclient.com/api/summary',
