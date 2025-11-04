@@ -2,8 +2,8 @@
 import { nextTick } from 'vue'
 
 function headerOffset() {
-    const header = document.querySelector<HTMLElement>('.header')
-    return header ? header.getBoundingClientRect().height + 10 : 80
+    const header = document.querySelector<HTMLElement>('.site-header')
+    return header ? header.getBoundingClientRect().height + 16 : 96
 }
 
 export async function scrollToHash(hash: string, attempts = 10, delayMs = 50) {

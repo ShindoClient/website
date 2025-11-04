@@ -1,45 +1,29 @@
 <template>
-  <main class="main">
-    <section class="hero">
-      <h1>Discord</h1>
-      <div class="redirect-text">
-        <p>Redirecting to Discord<span class="dots"></span></p>
-        <noscript>
-          <p>
-            If not redirected automatically,
-            <a href="https://discord.gg/uU56tvtXMU" style="color: var(--primary-color)">click here</a>
-          </p>
-        </noscript>
-      </div>
-    </section>
+  <main class="flex min-h-[60vh] items-center justify-center px-4">
+    <div class="glass-panel flex max-w-md flex-col items-center gap-4 rounded-[28px] border border-white/10 bg-white/5 px-8 py-10 text-center">
+      <span class="section-label bg-white/10 text-white/60">Discord</span>
+      <h1 class="font-display text-3xl text-white">Jumping to the community</h1>
+      <p class="text-sm text-white/60">
+        You are being redirected to our Discord server. If the redirect does not happen automatically, use the button below.
+      </p>
+      <a :href="discordUrl" class="button-primary justify-center" target="_blank" rel="noopener">
+        Open Discord
+      </a>
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
+const runtimeConfig = useRuntimeConfig()
+const discordUrl = runtimeConfig.public.discordUrl as string
+
 onMounted(() => {
-  setTimeout(() => {
-    window.location.href = 'https://discord.gg/uU56tvtXMU'
-  }, 500)
+  const timer = window.setTimeout(() => {
+    window.location.href = discordUrl
+  }, 600)
+
+  window.addEventListener('beforeunload', () => clearTimeout(timer))
 })
 </script>
-
-<style scoped>
-.redirect-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-.dots::after {
-  content: '';
-  animation: dots 2s steps(4, end) infinite;
-}
-@keyframes dots {
-  0%, 20% { content: ''; }
-  40% { content: '.'; }
-  60% { content: '..'; }
-  80% { content: '...'; }
-}
-</style>

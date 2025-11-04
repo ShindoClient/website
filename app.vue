@@ -5,12 +5,12 @@ import { Analytics } from '@vercel/analytics/nuxt'
 <template>
   <SpeedInsights/>
   <Analytics/>
-  <div class="min-h-screen">
+  <div class="relative flex min-h-screen flex-col overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 opacity-70 grid-overlay"></div>
     <NavBar />
-    <NuxtPage />
+    <main class="flex-1 pt-24 sm:pt-28">
+      <NuxtPage />
+    </main>
     <Footer />
   </div>
 </template>
-<style>
-@import url('assets/css/tailwind.css');
-</style>
