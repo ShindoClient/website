@@ -11,10 +11,10 @@
           </div>
           <div>
             <h1 class="font-display text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl">
-              AAA polish. Open-source DNA. Built for competitive Minecraft.
+              Modern & Open-source Minecraft Client. Built for competitivity.
             </h1>
             <p class="mt-5 max-w-xl text-lg text-white/70">
-              ShindoClient delivers a modern launcher experience inspired by Lunar, Feather and LabyMod—without sacrificing
+              ShindoClient delivers a modern launcher experience inspired by Lunar, Feather and LabyMod, without sacrificing
               the openness of the community. Locked-down security, lightning-fast tech, and visuals that make every login feel premium.
             </p>
           </div>
@@ -33,44 +33,6 @@
               Join Discord
             </NuxtLink>
           </div>
-          <div class="mt-6 grid gap-4 sm:grid-cols-3">
-            <div
-              v-for="metric in metrics"
-              :key="metric.label"
-              class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]"
-            >
-              <p class="text-xs uppercase tracking-[0.35em] text-white/40">{{ metric.label }}</p>
-              <p :class="['mt-2 text-2xl font-semibold', metric.accent]">{{ metric.value }}</p>
-              <button
-                v-if="metric.label === 'Gateway'"
-                type="button"
-                class="mt-4 inline-flex items-center gap-2 text-xs text-white/50 transition hover:text-white/80"
-                @click="refreshStatus"
-              >
-                <svg
-                  v-if="!statusPending"
-                  class="h-3.5 w-3.5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                >
-                  <path d="M3 12a9 9 0 0 1 9-9c2.4 0 4.6.97 6.19 2.54L21 9" />
-                  <path d="M3 3v6h6" />
-                  <path d="M21 12a9 9 0 0 1-9 9c-2.4 0-4.6-.97-6.19-2.54L3 15" />
-                  <path d="M21 21v-6h-6" />
-                </svg>
-                <svg v-else class="h-3.5 w-3.5 animate-spin text-white/60" viewBox="0 0 24 24" fill="none">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.375 0 0 5.375 0 12h4z" />
-                </svg>
-                <span>{{ statusPending ? 'Updating' : 'Refresh' }}</span>
-              </button>
-            </div>
-          </div>
-          <p v-if="statusError" class="text-xs text-amber-300/80">
-            Unable to reach status endpoint. Using cached data.
-          </p>
         </div>
         <div class="relative">
           <div class="pointer-events-none absolute inset-0 -translate-y-6 rounded-[36px] bg-panel-glow blur-3xl"></div>
@@ -94,7 +56,7 @@
             Built like a pro launcher. Tuned for open-source experimentation.
           </h2>
           <p class="mx-auto max-w-2xl text-base text-white/65">
-            Every subsystem was rebuilt for stability, security, and scalability—from secure FireBase presence syncing to a modular client-side architecture tuned for minimal input latency.
+            Every subsystem was rebuilt for stability, security, and scalability, to a modular client-side architecture tuned for minimal input latency.
           </p>
         </div>
         <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -125,77 +87,13 @@
       </div>
     </section>
 
-    <section id="status" class="px-4">
-      <div class="mx-auto max-w-[1120px] rounded-[32px] border border-white/10 bg-surface-elevated/90 p-8 shadow-[0_32px_80px_-45px_rgba(12,18,46,0.9)] backdrop-blur-2xl md:p-12">
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <span class="section-label bg-white/10 text-white/60">Live Status</span>
-            <h2 class="mt-4 font-display text-3xl text-white sm:text-4xl">Gateway availability in real time</h2>
-            <p class="mt-3 max-w-2xl text-sm text-white/60">
-              Tokenised WebSocket auth backed by FireBase ensures every session is secured. Role sync, presence and broadcast updates are streamed with automatic re-authentication on account swaps.
-            </p>
-          </div>
-          <div class="flex items-center gap-3 text-xs text-white/50">
-            <span class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
-              <span :class="['h-2 w-2 rounded-full', gatewayHealthy ? 'bg-success animate-pulse' : 'bg-warning']"></span>
-              {{ gatewayHealthy ? 'Operational' : 'Investigating' }}
-            </span>
-            <span v-if="lastUpdated" class="text-white/40">
-              Updated {{ formatRelative(lastUpdated) }}
-            </span>
-          </div>
-        </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-[minmax(0,1fr)_340px]">
-          <div class="grid gap-6 sm:grid-cols-2">
-            <div class="glass-panel glass-panel--static flex h-full flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
-              <p class="text-xs uppercase tracking-[0.35em] text-white/40">Online Presence</p>
-              <p class="text-4xl font-semibold text-white">{{ playersOnline.toString().padStart(2, '0') }}</p>
-              <p class="text-sm text-white/50">Players currently authenticated through the gateway.</p>
-            </div>
-            <div class="glass-panel glass-panel--static flex h-full flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
-              <p class="text-xs uppercase tracking-[0.35em] text-white/40">Latency</p>
-              <p class="text-4xl font-semibold text-white">
-                {{ latencyMs ? `${Math.round(latencyMs)} ms` : '—' }}
-              </p>
-              <p class="text-sm text-white/50">Round-trip measured from Render edge to Minecraft services.</p>
-            </div>
-            <div class="glass-panel glass-panel--static sm:col-span-2 flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
-              <p class="text-xs uppercase tracking-[0.35em] text-white/40">Authentication Stack</p>
-              <ul class="space-y-2 text-sm text-white/55">
-                <li v-for="item in statusHighlights" :key="item" class="flex items-start gap-2">
-                  <span class="mt-1 h-1.5 w-1.5 rounded-full bg-accent-400/70"></span>
-                  <span>{{ item }}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="glass-panel glass-panel--static glass-panel--loose relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6">
-            <div class="pointer-events-none absolute inset-x-6 top-0 h-32 bg-panel-glow"></div>
-            <h3 class="text-base font-semibold text-white">Deployment Targets</h3>
-            <p class="mt-2 text-sm text-white/55">
-              Built for Render + Vercel with Docker hardening, scoped environment groups and automated key rotation.
-            </p>
-            <ul class="mt-6 space-y-4 text-sm text-white/60">
-              <li v-for="target in deploymentTargets" :key="target.title" class="flex items-start gap-3">
-                <div class="mt-0.5 h-2 w-2 rounded-full bg-white/30"></div>
-                <div>
-                  <p class="font-medium text-white/80">{{ target.title }}</p>
-                  <p class="text-white/50">{{ target.subtitle }}</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="showcase" class="px-4">
       <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
         <div class="flex flex-col gap-4 text-center">
           <span class="section-label mx-auto bg-white/10 text-white/60">Visual Showcase</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">Polished UI inspired by premium clients</h2>
           <p class="mx-auto max-w-2xl text-base text-white/65">
-            From the animated launcher dashboard to modular HUD editing, every element is engineered to match modern AAA Minecraft clients—while remaining fully customizable.
+            From the animated launcher dashboard to modular HUD editing, every element is engineered to match modern Minecraft clients—while remaining fully customizable.
           </p>
         </div>
         <div
@@ -272,14 +170,14 @@
       </div>
     </section>
 
-    <section class="px-4">
+    <section id="upgrade" class="px-4">
       <div class="mx-auto max-w-[1120px] overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-accent-700/60 via-accent-500/40 to-surface-elevated/80 p-10 shadow-[0_40px_100px_-40px_rgba(90,62,247,0.6)]">
         <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_320px] md:items-center">
           <div class="space-y-4">
             <span class="section-label bg-white/10 text-white/70">Upgrade Today</span>
             <h2 class="font-display text-3xl text-white sm:text-4xl">Ready for the next ranked queue?</h2>
             <p class="text-sm text-white/70">
-              Deploy the new ShindoClient build by downloading the version manifest and syncing your modules. The new secure WebSocket handshake will seamlessly sync your permissions after every account swap.
+              Deploy the new ShindoClient build by downloading the version manifest and syncing your modules..
             </p>
             <ul class="space-y-3 text-sm text-white/70">
               <li v-for="step in upgradeSteps" :key="step" class="flex items-start gap-3">
@@ -308,15 +206,15 @@
           <span class="section-label mx-auto bg-white/10 text-white/60">FAQ</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">All the details before you drop into queue</h2>
         </div>
-        <div class="grid gap-4 md:grid-cols-2">
-          <div
-            v-for="(faq, index) in faqs"
-            :key="faq.question"
-            class="glass-panel glass-panel--static glass-panel--loose rounded-[28px] border border-white/10 bg-white/5 p-6 transition-colors hover:border-white/20"
-          >
-            <button
-              type="button"
-              class="flex w-full items-start justify-between gap-4 text-left"
+          <div class="grid items-start gap-4 md:grid-cols-2">
+            <div
+              v-for="(faq, index) in faqs"
+              :key="faq.question"
+              class="glass-panel glass-panel--static glass-panel--loose rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-white/20"
+            >
+              <button
+                type="button"
+                class="flex w-full items-start justify-between gap-4 text-left"
               :aria-expanded="isFaqOpen(index)"
               :aria-controls="`faq-panel-${index}`"
               @click="toggleFaq(index)"
@@ -333,13 +231,13 @@
                 </svg>
               </span>
             </button>
-            <Transition
-              enter-active-class="duration-300 transition-all ease-out"
-              enter-from-class="max-h-0 opacity-0"
-              enter-to-class="max-h-[320px] opacity-100"
-              leave-active-class="duration-200 transition-all ease-in"
-              leave-from-class="max-h-[320px] opacity-100"
-              leave-to-class="max-h-0 opacity-0"
+              <Transition
+                enter-active-class="duration-[1200ms] transition-all ease-[cubic-bezier(0.16,1,0.3,1)]"
+                enter-from-class="max-h-0 opacity-0"
+                enter-to-class="max-h-[320px] opacity-100"
+                leave-active-class="duration-450 transition-all ease-[cubic-bezier(0.4,0,0.2,1)]"
+                leave-from-class="max-h-[320px] opacity-100"
+                leave-to-class="max-h-0 opacity-0"
             >
               <div
                 v-if="isFaqOpen(index)"
@@ -366,7 +264,6 @@ import { scrollToHash } from '@/scripts/scrollTo'
 import { useClientMeta } from '@/composables/useClientMeta'
 
 const runtimeConfig = useRuntimeConfig()
-const statusEndpoint = runtimeConfig.public.statusEndpoint as string | undefined
 const { data: clientMeta } = useClientMeta()
 
 const downloadUrl = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
@@ -374,58 +271,6 @@ const discordUrl = computed(() => clientMeta.value?.discord ?? (runtimeConfig.pu
 const versionLabel = computed(() =>
   clientMeta.value?.latestversionstring ? `Version ${clientMeta.value.latestversionstring}` : 'Version 5.0'
 )
-
-const defaultStatus = {
-  health: { ok: false },
-  players: { count: 0 },
-  latencyMs: null,
-  updatedAt: null,
-  timestamp: null
-}
-
-const {
-  data: statusData,
-  pending: statusPending,
-  refresh: refreshStatus,
-  error: statusError
-} = useLazyAsyncData('gateway-status', async () => {
-  if (!statusEndpoint) return defaultStatus
-  try {
-    const result = await $fetch(statusEndpoint, {
-      headers: { accept: 'application/json' },
-      timeout: 4000
-    })
-    return (result as typeof defaultStatus) ?? defaultStatus
-  } catch {
-    return defaultStatus
-  }
-}, {
-  default: () => defaultStatus,
-  server: false
-})
-
-const gatewayHealthy = computed(() => statusData.value?.health?.ok ?? false)
-const playersOnline = computed(() => statusData.value?.players?.count ?? 0)
-const latencyMs = computed(() => statusData.value?.latencyMs ?? null)
-const lastUpdated = computed(() => statusData.value?.updatedAt || statusData.value?.timestamp || null)
-
-const metrics = computed(() => [
-  {
-    label: 'Gateway',
-    value: gatewayHealthy.value ? 'Operational' : 'Degraded',
-    accent: gatewayHealthy.value ? 'text-success' : 'text-warning'
-  },
-  {
-    label: 'Latency',
-    value: latencyMs.value ? `${Math.round(latencyMs.value)} ms` : '—',
-    accent: 'text-white'
-  },
-  {
-    label: 'Players',
-    value: playersOnline.value.toString().padStart(2, '0'),
-    accent: 'text-white'
-  }
-])
 
 type FeatureHighlight = {
   title: string
@@ -436,48 +281,63 @@ type FeatureHighlight = {
 
 const featureHighlights = [
   {
-    title: 'Secure Auth Pipeline',
-    description: 'FireBase-backed JWT sessions, token refresh on account swap and instant invalidation on ban events.',
-    icon: 'M12 2l7 4v6c0 5-3.5 10-7 11-3.5-1-7-6-7-11V6l7-4z',
+    title: 'Spotify Integration',
+    description:
+      'Link Spotify straight into the client so sessions broadcast what you are listening to alongside your gameplay.',
+    icon: 'M4 12c4-2.5 8-2.5 12 0v6c-4-2.5-8-2.5-12 0v-6zm0-6c4-2.5 8-2.5 12 0v4c-4-2.5-8-2.5-12 0V6z',
     points: [
-      'JWT sessions backed by FireBase with instant revocation on flag events.',
-      'Automatic refresh when players switch Microsoft or Mojang accounts.'
+      'Native controls expose track, artist and playback state without leaving the HUD.',
+      'Discord Rich Presence mirrors music status automatically without external plugins.'
     ]
   },
   {
-    title: 'Modular HUD System',
-    description: 'Drag-and-drop layout editor with profile presets, nano animations and shader-safe rendering.',
-    icon: 'M4 7l8-4 8 4-8 4-8-4zm0 6l8 4 8-4m-8 4v5',
+    title: 'Profile System',
+    description:
+      'Create, sync and share client profiles that bundle mods, cosmetics and keybinds for every playstyle.',
+    icon: 'M12 12a4 4 0 100-8 4 4 0 000 8zm0 2c-4 0-8 2-8 6h16c0-4-4-6-8-6z',
     points: [
-      'Profile-based layouts with per-scene persistence.',
-      'Shader-friendly rendering path to avoid ghosting on custom packs.'
+      'Swap between ranked, practice and creator presets in a single click.',
+      'Cloud syncing keeps layouts identical whether you log in on desktop or laptop.'
     ]
   },
   {
-    title: 'Presence Intelligence',
-    description: 'Realtime WebSocket presence with role sync, last-seen tracking and admin dashboards on Render.',
-    icon: 'M16 17a4 4 0 10-8 0 4 4 0 008 0z M3 20a6 6 0 0112 0v1H3v-1z M12 3a4 4 0 110 8 4 4 0 010-8z',
+    title: 'Warp Tweaker',
+    description:
+      'A built-in network tweaker that pairs optimised sockets with Cloudflare WARP routing for lower jitter.',
+    icon: 'M4 7h16M4 12h10M4 17h14m-3-10l3-3m-3 8l3-3m-3 8l3-3',
     points: [
-      'Live Gateway dashboards stream status and presence to staff.',
-      'Last-seen tracking feeds moderation insights in real time.'
+      'Auto-detects latency spikes and seamlessly enables the WARP proxy when needed.',
+      'Fine-grained toggles let you prioritise stability, throughput or raw ping per server.'
     ]
   },
   {
-    title: 'Performance Toolkit',
-    description: 'Async chunk streaming, particle throttling and auto mod priority to keep FPS spikes under control.',
-    icon: 'M3 12h18M12 3v18m-7-7 14-14M5 19l14-14',
+    title: 'Addon Ecosystem',
+    description:
+      'Discover and manage community-built addons with signed manifests and sandboxed execution.',
+    icon: 'M4 5h16v4H4zm0 6h10v8H4zm12 3h4v5h-4z',
     points: [
-      'Adaptive FPS profile automatically tunes chunk streaming and particles.',
-      'Module priority system keeps critical combat mods responsive.'
+      'One-click installs with dependency resolution and automatic updates.',
+      'Scoped permissions keep experimental modules from touching sensitive APIs.'
     ]
   },
   {
-    title: 'Open-source Transparency',
-    description: 'Auditable code, documented RFCs and a CDN pipeline for ultra-lightweight resource distribution.',
-    icon: 'M21 21l-6-6m2-3a7 7 0 11-14 0 7 7 0 0114 0z',
+    title: 'Security Shield',
+    description:
+      'Hardening layer that patches legacy Minecraft vulnerabilities and guards against malicious packets.',
+    icon: 'M12 2l7 4v6c0 5-3.5 10-7 10s-7-5-7-10V6l7-4z',
     points: [
-      'Active RFC process maps upcoming features before they ship.',
-      'Global CDN delivery keeps manifest downloads under 200 ms worldwide.'
+      'Runtime checks neutralise known crash exploits and remote code execution chains.',
+      'Integrity monitor flags modified jars before they can inject into the client.'
+    ]
+  },
+  {
+    title: 'Multi-platform Support',
+    description:
+      'Unified launcher experience across Windows, macOS and Linux with native rendering paths.',
+    icon: 'M8 4h8v2H8zM4 6h16v12H4zM8 18h8v2H8z',
+    points: [
+      'Metal, DirectX and OpenGL pipelines are tuned per OS for consistent FPS.',
+      'Automatic updates deliver identical builds no matter where you login.'
     ]
   }
 ] satisfies FeatureHighlight[]
@@ -513,17 +373,6 @@ const showcaseSlides = [
   }
 ] as const
 
-const statusHighlights = [
-  'Token chaining ensures Microsoft, Mojang and Offline accounts refresh without client restarts.',
-  'FireBase presence events trigger automatic role syncs into the Java client.',
-  'Render-ready Docker image with non-root user, capability drop and health probes.'
-]
-
-const deploymentTargets = [
-  { title: 'Render (Gateway)', subtitle: 'Docker build + zero-downtime deploys with health checks.' },
-  { title: 'Vercel (Website / Status)', subtitle: 'Nuxt 3 edge rendering, instant invalidation on release.' },
-  { title: 'GitHub Pages (CDN)', subtitle: 'Static assets & manifests delivered from shindoclient.github.io.' }
-]
 
 const upgradeSteps = [
   '1. Download the latest manifest.',
@@ -533,19 +382,14 @@ const upgradeSteps = [
 
 const faqs = [
   {
-    question: 'How does the new authentication system work?',
-    answer:
-      'The Java client requests a signed JWT from the REST session endpoint, then authenticates via secure WebSocket. Tokens are short-lived, revoked on demand and refreshed automatically when you swap accounts.'
-  },
-  {
     question: 'Is ShindoClient legal on major networks?',
     answer:
       'Yes. ShindoClient focuses on performance optimisations, QoL modules and visuals. No unfair combat advantages are shipped by default and key systems are hot-pluggable to comply with server rules.'
   },
   {
-    question: 'What is the roadmap for 2025?',
+    question: 'Can server owners request certain mods be disabled?',
     answer:
-      'Upcoming releases include deeper FireBase analytics, profile cloud sync and an optional companion mobile app that sends push alerts when tournaments go live or friends hop in-game.'
+      'Yes. We cooperate with network staff and can remotely disable or blacklist specific modules to align with their policies. Reach out with the required restrictions and we will mirror them on the client.'
   },
   {
     question: 'Does the launcher auto-update?',
@@ -559,26 +403,17 @@ const faqs = [
   }
 ]
 
-const openFaq = ref<number | null>(0)
+const openFaqs = ref<number[]>([])
 
 const toggleFaq = (index: number) => {
-  openFaq.value = openFaq.value === index ? null : index
-}
-
-const isFaqOpen = (index: number) => openFaq.value === index
-
-const formatRelative = (timestamp: string | number | null) => {
-  if (!timestamp) return ''
-  try {
-    const date = new Date(timestamp)
-    return new Intl.RelativeTimeFormat('en', { numeric: 'auto' }).format(
-      Math.round((date.getTime() - Date.now()) / (1000 * 60)),
-      'minute'
-    )
-  } catch {
-    return ''
+  if (openFaqs.value.includes(index)) {
+    openFaqs.value = openFaqs.value.filter((item) => item !== index)
+    return
   }
+  openFaqs.value = [...openFaqs.value, index]
 }
+
+const isFaqOpen = (index: number) => openFaqs.value.includes(index)
 
 const scrollToSection = (hash: string) => scrollToHash(hash)
 
@@ -620,10 +455,10 @@ onBeforeUnmount(stopCarousel)
 useSeoMeta({
   title: 'ShindoClient — Modern Minecraft 1.8.9 Client',
   description:
-    'Experience ShindoClient, a AAA-inspired Minecraft 1.8.9 client with secure FireBase auth, modular HUD, performance upgrades and real-time status monitoring.',
+    'Experience ShindoClient, a Modern Minecraft 1.8.9 client with secure Tons of mods & customizations, modular HUD and performance upgrades.',
   ogTitle: 'ShindoClient — Modern Minecraft 1.8.9 Client',
   ogDescription:
-    'Secure FireBase auth, modular UI and AAA-grade visuals. Download ShindoClient for a premium 1.8.9 experience.',
+    'Modular UI and Modern visuals. Download ShindoClient for a premium 1.8.9 experience.',
   ogImage: '/embed.png',
   ogUrl: 'https://shindoclient.com',
   twitterCard: 'summary_large_image'
@@ -640,7 +475,7 @@ useHead({
             '@type': 'SoftwareApplication',
             name: 'ShindoClient',
             description:
-              'A modern, open-source Minecraft 1.8.9 PvP client with AAA-inspired design, security-focused architecture and cross-platform support.',
+              'A modern, open-source Minecraft 1.8.9 PvP client with an modern design, security-focused architecture and cross-platform support.',
             url: 'https://shindoclient.com',
             downloadUrl: downloadUrl.value,
             applicationCategory: ['GameApplication', 'EntertainmentApplication'],

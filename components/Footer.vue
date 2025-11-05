@@ -6,7 +6,7 @@
       <div>
         <p class="font-display text-lg font-semibold text-white">ShindoClient</p>
         <p class="mt-1 text-sm text-white/60">
-          Crafted by competitive players. Inspired by AAA launchers. Open source and community-first.
+          Crafted by competitive players. Inspired by Modern launchers. Open source and community-first.
         </p>
       </div>
       <div class="flex flex-col items-start gap-4 text-sm text-white/60 md:flex-row md:items-center">

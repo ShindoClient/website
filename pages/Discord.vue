@@ -14,18 +14,45 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted } from 'vue'
 import { useClientMeta } from '@/composables/useClientMeta'
 
 const runtimeConfig = useRuntimeConfig()
 const { data: clientMeta } = useClientMeta()
-const discordHref = computed(() => clientMeta.value?.discord ?? (runtimeConfig.public.discordUrl as string))
+const DEFAULT_DISCORD_INVITE = 'https://discord.gg/uU56tvtXMU'
+
+const rawDiscordHref = computed(() => clientMeta.value?.discord ?? (runtimeConfig.public.discordUrl as string))
+
+const discordHref = computed(() => {
+  const raw = (rawDiscordHref.value ?? '').trim()
+  if (!raw) return DEFAULT_DISCORD_INVITE
+
+  const absolute = /^https?:\/\//i.test(raw) ? raw : `https://${raw.replace(/^\/+/, '')}`
+
+  try {
+    const url = new URL(absolute)
+    const normalizedPath = url.pathname.replace(/\/+$/, '').toLowerCase()
+    const isInternalDiscordPath =
+      normalizedPath === '/discord' && ['shindoclient.com', 'www.shindoclient.com'].includes(url.hostname)
+
+    return isInternalDiscordPath ? DEFAULT_DISCORD_INVITE : url.href
+  } catch {
+    return DEFAULT_DISCORD_INVITE
+  }
+})
+
+let redirectTimer: number | undefined
 
 onMounted(() => {
-  const timer = window.setTimeout(() => {
-    window.location.href = discordHref.value
+  redirectTimer = window.setTimeout(() => {
+    window.location.replace(discordHref.value)
   }, 600)
+})
 
-  window.addEventListener('beforeunload', () => clearTimeout(timer))
+onBeforeUnmount(() => {
+  if (redirectTimer !== undefined) {
+    window.clearTimeout(redirectTimer)
+    redirectTimer = undefined
+  }
 })
 </script>
