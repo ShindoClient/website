@@ -134,8 +134,8 @@ const versionLabel = computed(() => (clientMeta.value?.latestversionstring ? `Ve
 const primaryLinks = [
   { label: 'Overview', hash: '#hero' },
   { label: 'Features', hash: '#features' },
-  { label: 'Upgrade Today', hash: '#upgrade' },
   { label: 'Showcase', hash: '#showcase' },
+  { label: 'Upgrade Today', hash: '#upgrade' },
   { label: 'FAQ', hash: '#faq' }
 ] as const
 
