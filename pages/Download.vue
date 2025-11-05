@@ -9,8 +9,7 @@
           </h1>
           <p class="mx-auto max-w-2xl text-sm text-white/65">
             Download the version manifest to integrate ShindoClient with your launcher of choice. Manifest updates are
-            published alongside each GitHub release and include the secure WebSocket configuration required for the new
-            authentication stack.
+            published alongside each GitHub release.
           </p>
           <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a :href="downloadHref" target="_blank" class="button-primary w-full justify-center sm:w-auto">
