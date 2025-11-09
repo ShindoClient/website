@@ -27,7 +27,7 @@ export function useClientMeta() {
 
   const metaUrl =
     (config.public.clientMetaUrl as string | undefined) ??
-    'https://shindoclient.github.io/data/meta/client.json'
+    'https://cdn.shindoclient.com/data/meta/client.json'
 
   const asyncData = useAsyncData<ClientMeta>(
     'client-meta',
