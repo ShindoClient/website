@@ -189,7 +189,7 @@
             </ul>
           </div>
           <div class="flex flex-col gap-3">
-            <NuxtLink :to="downloadUrl" class="button-primary w-full justify-center">
+            <NuxtLink to="/download" class="button-primary w-full justify-center">
               Download Manifest
             </NuxtLink>
             <NuxtLink to="/discord" class="button-ghost w-full justify-center border-white/20 bg-white/10 hover:border-white/30">
