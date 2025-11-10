@@ -68,6 +68,6 @@ const runtimeConfig = useRuntimeConfig()
 const { data: clientMeta } = useClientMeta()
 
 const downloadHref = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
-const launcherHref = computed(() => clientMeta.value?.launcherlink ?? (runtimeConfig.public.launcherUrl as string))
+const launcherHref = computed(() => clientMeta.value?.launcherLink ?? (runtimeConfig.public.launcherUrl as string))
 const latestVersion = computed(() => clientMeta.value?.latestversion ?? null)
 </script>
