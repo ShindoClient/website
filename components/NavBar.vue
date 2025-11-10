@@ -129,7 +129,7 @@ const config = useRuntimeConfig()
 const { data: clientMeta } = useClientMeta()
 
 const discordHref = computed(() => clientMeta.value?.discord ?? config.public.discordUrl)
-const versionLabel = computed(() => (clientMeta.value?.latestversionstring ? `Version ${clientMeta.value.latestversionstring}` : null))
+const versionLabel = computed(() => (clientMeta.value?.latestversion ? `Version ${clientMeta.value.latestversion}` : null))
 
 const primaryLinks = [
   { label: 'Overview', hash: '#hero' },

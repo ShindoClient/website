@@ -15,11 +15,7 @@
             <a :href="downloadHref" target="_blank" class="button-primary w-full justify-center sm:w-auto">
               Download Manifest
             </a>
-            <a
-              href="https://github.com/ShindoClient/shindo-launcher/releases/"
-              target="_blank"
-              class="button-secondary w-full justify-center border border-white/20 bg-white/10 text-white hover:border-white/40 sm:w-auto"
-            >
+            <a :href="launcherHref" target="_blank" class="button-primary w-full justify-center sm:w-auto">
               Download Launcher
             </a>
             <NuxtLink to="/discord" class="button-ghost w-full justify-center border-white/20 bg-white/10 hover:border-white/30 sm:w-auto">
@@ -72,5 +68,6 @@ const runtimeConfig = useRuntimeConfig()
 const { data: clientMeta } = useClientMeta()
 
 const downloadHref = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
-const latestVersion = computed(() => clientMeta.value?.latestversionstring ?? null)
+const launcherHref = computed(() => clientMeta.value?.launcherlink ?? (runtimeConfig.public.launcherUrl as string))
+const latestVersion = computed(() => clientMeta.value?.latestversion ?? null)
 </script>

@@ -268,8 +268,7 @@ const { data: clientMeta } = useClientMeta()
 
 const downloadUrl = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
 const discordUrl = computed(() => clientMeta.value?.discord ?? (runtimeConfig.public.discordUrl as string))
-const versionLabel = computed(() =>
-  clientMeta.value?.latestversionstring ? `Version ${clientMeta.value.latestversionstring}` : 'Version 5.0'
+const versionLabel = computed(() => clientMeta.value?.latestversion ? `Version ${clientMeta.value.latestversion}` : 'Version 5.0'
 )
 
 type FeatureHighlight = {
@@ -480,7 +479,7 @@ useHead({
             downloadUrl: downloadUrl.value,
             applicationCategory: ['GameApplication', 'EntertainmentApplication'],
             operatingSystem: ['Windows', 'macOS', 'Linux'],
-            softwareVersion: clientMeta.value?.latestversionstring ?? '5.0.0',
+            softwareVersion: clientMeta.value?.latestversion ?? '5.0.0',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
             screenshot: [
               'https://shindoclient.com/screenshots/menu.webp',
