@@ -45,6 +45,8 @@
     box-shadow: 0 24px 65px -48px rgba(10, 18, 46, 0.9);
     transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
     will-change: transform;
+    transform: translate3d(0, 0, 0);
+    isolation: isolate;
   }
 
   .glass-panel::before {
@@ -56,11 +58,13 @@
     pointer-events: none;
     transform: scale(1.04);
     transition: opacity 0.35s ease, transform 0.5s ease;
+    border-radius: inherit;
+    z-index: -1;
   }
 
   .glass-panel:hover {
     border-color: rgba(255, 255, 255, 0.18);
-    transform: translateY(-6px);
+    transform: translate3d(0, -6px, 0);
     box-shadow: 0 35px 95px -55px rgba(90, 62, 247, 0.55);
   }
 

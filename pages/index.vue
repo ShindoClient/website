@@ -59,27 +59,34 @@
             Every subsystem was rebuilt for stability, security, and scalability, to a modular client-side architecture tuned for minimal input latency.
           </p>
         </div>
-        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div class="grid auto-rows-[minmax(0,1fr)] gap-5 md:grid-cols-2 xl:grid-cols-3">
           <div
             v-for="feature in featureHighlights"
             :key="feature.title"
-            class="glass-panel relative flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-lg shadow-black/20"
+            class="glass-panel relative flex h-full min-h-[260px] flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-lg shadow-black/20"
           >
             <div class="flex items-center gap-3">
               <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-accent-200">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path :d="feature.icon" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <component
+                  :is="feature.icon"
+                  class="h-5 w-5"
+                  aria-hidden="true"
+                  :size="20"
+                  :stroke-width="1.6"
+                />
               </div>
               <h3 class="text-lg font-semibold text-white">{{ feature.title }}</h3>
             </div>
-            <p class="text-sm text-white/65">
+            <p class="text-sm leading-relaxed text-white/65 text-pretty break-words">
               {{ feature.description }}
             </p>
-            <ul v-if="feature.points" class="mt-1 space-y-2 text-sm text-white/50">
-              <li v-for="point in feature.points" :key="point" class="flex items-start gap-2">
-                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/40"></span>
-                <span>{{ point }}</span>
+            <ul
+              v-if="feature.points"
+              class="mt-1 space-y-1.5 text-[0.92rem] text-white/60 leading-relaxed text-pretty"
+            >
+              <li v-for="point in feature.points" :key="point" class="flex items-start gap-2.5">
+                <Check class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent-200" :stroke-width="2" />
+                <span class="break-words">{{ point }}</span>
               </li>
             </ul>
           </div>
@@ -190,7 +197,7 @@
           </div>
           <div class="flex flex-col gap-3">
             <NuxtLink to="/download" class="button-primary w-full justify-center">
-              Download Manifest
+              Download Now
             </NuxtLink>
             <NuxtLink to="/discord" class="button-ghost w-full justify-center border-white/20 bg-white/10 hover:border-white/30">
               Join Release Announcements
@@ -256,12 +263,14 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import type { Component } from 'vue'
 import heroMenu from 'public/screenshots/menu.webp'
 import heroHud from 'public/screenshots/huds.webp'
 import heroMods from 'public/screenshots/modmenu.webp'
 import heroBackgrounds from 'public/screenshots/backgrounds.webp'
 import { scrollToHash } from '@/scripts/scrollTo'
 import { useClientMeta } from '@/composables/useClientMeta'
+import { Check, MonitorSmartphone, Music, GlobeLock, ShieldCheck, UserRoundPen } from 'lucide-vue-next'
 
 const runtimeConfig = useRuntimeConfig()
 const { data: clientMeta } = useClientMeta()
@@ -274,7 +283,7 @@ const versionLabel = computed(() => clientMeta.value?.latestversion ? `Version $
 type FeatureHighlight = {
   title: string
   description: string
-  icon: string
+  icon: Component
   points?: string[]
 }
 
@@ -283,59 +292,46 @@ const featureHighlights = [
     title: 'Spotify Integration',
     description:
       'Link Spotify straight into the client so sessions broadcast what you are listening to alongside your gameplay.',
-    icon: 'M4 12c4-2.5 8-2.5 12 0v6c-4-2.5-8-2.5-12 0v-6zm0-6c4-2.5 8-2.5 12 0v4c-4-2.5-8-2.5-12 0V6z',
+    icon: Music,
     points: [
-      'Native controls expose track, artist and playback state without leaving the HUD.',
-      'Discord Rich Presence mirrors music status automatically without external plugins.'
+      'Native controls expose track, artist and playback state without leaving the HUD.'
     ]
   },
   {
     title: 'Profile System',
     description:
-      'Create, sync and share client profiles that bundle mods, cosmetics and keybinds for every playstyle.',
-    icon: 'M12 12a4 4 0 100-8 4 4 0 000 8zm0 2c-4 0-8 2-8 6h16c0-4-4-6-8-6z',
+      'Create and sync client profiles that bundle mods, cosmetics and keybinds for every playstyle.',
+    icon: UserRoundPen,
     points: [
       'Swap between ranked, practice and creator presets in a single click.',
-      'Cloud syncing keeps layouts identical whether you log in on desktop or laptop.'
+      'Automatic profile switching when entering favourite servers.'
     ]
   },
   {
-    title: 'Warp Tweaker',
+    title: 'Network Tweaker',
     description:
-      'A built-in network tweaker that pairs optimised sockets with Cloudflare WARP routing for lower jitter.',
-    icon: 'M4 7h16M4 12h10M4 17h14m-3-10l3-3m-3 8l3-3m-3 8l3-3',
+      'The client-side Internet Tweaker maps your network resources and continuously retunes sockets to keep routes stable and responsive.',
+    icon: GlobeLock,
     points: [
-      'Auto-detects latency spikes and seamlessly enables the WARP proxy when needed.',
-      'Fine-grained toggles let you prioritise stability, throughput or raw ping per server.'
-    ]
-  },
-  {
-    title: 'Addon Ecosystem',
-    description:
-      'Discover and manage community-built addons with signed manifests and sandboxed execution.',
-    icon: 'M4 5h16v4H4zm0 6h10v8H4zm12 3h4v5h-4z',
-    points: [
-      'One-click installs with dependency resolution and automatic updates.',
-      'Scoped permissions keep experimental modules from touching sensitive APIs.'
+      'Declare bandwidth, QoS priorities and hardware limits so the client auto-adjusts buffers, pacing and retries per profile.',
+      'Enable aggressive presets that tighten packet scheduling and TCP windows to improve in-game responsiveness.'
     ]
   },
   {
     title: 'Security Shield',
     description:
       'Hardening layer that patches legacy Minecraft vulnerabilities and guards against malicious packets.',
-    icon: 'M12 2l7 4v6c0 5-3.5 10-7 10s-7-5-7-10V6l7-4z',
+    icon: ShieldCheck,
     points: [
-      'Runtime checks neutralise known crash exploits and remote code execution chains.',
-      'Integrity monitor flags modified jars before they can inject into the client.'
+      'Runtime checks neutralise known crash exploits and remote code execution chains.'
     ]
   },
   {
     title: 'Multi-platform Support',
     description:
       'Unified launcher experience across Windows, macOS and Linux with native rendering paths.',
-    icon: 'M8 4h8v2H8zM4 6h16v12H4zM8 18h8v2H8z',
+    icon: MonitorSmartphone,
     points: [
-      'Metal, DirectX and OpenGL pipelines are tuned per OS for consistent FPS.',
       'Automatic updates deliver identical builds no matter where you login.'
     ]
   }
@@ -343,11 +339,11 @@ const featureHighlights = [
 
 const showcaseSlides = [
   {
-    title: 'Launcher Home',
+    title: 'Home',
     description:
       'The redesigned landing screen blends premium gradients with actionable CTAs, keeping download links and presence indicators one glance away.',
     image: heroMenu,
-    alt: 'ShindoClient launcher home screen'
+    alt: 'ShindoClient home screen'
   },
   {
     title: 'Modular HUD Editor',
