@@ -13,9 +13,9 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            clientMetaUrl: process.env.NUXT_PUBLIC_CLIENT_META_URL || 'https://shindoclient.github.io/data/meta/client.json',
-            statusEndpoint: process.env.NUXT_PUBLIC_STATUS_ENDPOINT || 'https://status.shindoclient.com/api/summary',
+            clientMetaUrl: process.env.NUXT_PUBLIC_CLIENT_META_URL || 'https://cdn.shindoclient.com/data/meta/client.json',
             downloadUrl: process.env.NUXT_PUBLIC_DOWNLOAD_URL || 'https://github.com/ShindoClient/Shindo-Client/releases/latest',
+            launcherUrl: process.env.NUXT_PUBLIC_LAUNCHER_URL || 'https://github.com/ShindoClient/shindo-launcher/releases/latest',
             discordUrl: process.env.NUXT_PUBLIC_DISCORD_URL || 'https://shindoclient.com/discord'
         }
     },
@@ -27,15 +27,13 @@ export default defineNuxtConfig({
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 {
                     name: 'description',
-                    content:
-                        'Download ShindoClient, a modern AAA-level Minecraft 1.8.9 client with competitive performance, security updates and cross-platform support.'
+                    content: 'Download ShindoClient, a modern Minecraft 1.8.9 client with competitive performance, security updates and cross-platform support.'
                 },
                 {
                     name: 'keywords',
-                    content:
-                        'minecraft client, pvp client, 1.8.9 client, minecraft mod, shindo client, lunar alternative, feather alternative, labymod alternative, minecraft enhancement'
+                    content: 'minecraft client, pvp client, 1.8.9 client, minecraft mod, shindo client, lunar alternative, feather alternative, labymod alternative, minecraft enhancement'
                 },
-                { name: 'author', content: 'ShindoClient' },
+                { name: 'author', content: 'MikiDevAHM' },
                 { name: 'robots', content: 'index, follow' },
                 { name: 'theme-color', content: '#5a3ef7' },
 
@@ -44,8 +42,7 @@ export default defineNuxtConfig({
                 { property: 'og:title', content: 'ShindoClient — Competitive 1.8.9 Minecraft Client' },
                 {
                     property: 'og:description',
-                    content:
-                        'Experience ShindoClient: pro-grade performance tweaks, modular UI and secure authentication for competitive Minecraft.'
+                    content: 'Experience ShindoClient: pro-grade performance tweaks, modular UI and secure authentication for competitive Minecraft.'
                 },
                 { property: 'og:image', content: '/embed.png' },
                 { property: 'og:image:alt', content: 'ShindoClient Showcase' },
@@ -59,7 +56,7 @@ export default defineNuxtConfig({
                 {
                     name: 'twitter:description',
                     content:
-                        'Performance tuned, AAA inspired design and seamless account sync. Elevate your Minecraft PvP with ShindoClient.'
+                        'Performance tuned, Modern inspired design and seamless account sync. Elevate your Minecraft PvP with ShindoClient.'
                 },
                 { name: 'twitter:image', content: '/embed.png' },
 
