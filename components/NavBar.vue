@@ -135,7 +135,8 @@ const primaryLinks = [
   { label: 'Overview', hash: '#hero' },
   { label: 'Features', hash: '#features' },
   { label: 'Showcase', hash: '#showcase' },
-  { label: 'Upgrade Today', hash: '#upgrade' },
+  { label: 'Support', hash: '#support' },
+  { label: 'Roadmap', hash: '#roadmap' },
   { label: 'FAQ', hash: '#faq' }
 ] as const
 

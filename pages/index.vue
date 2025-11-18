@@ -207,6 +207,86 @@
       </div>
     </section>
 
+    <section id="support" class="px-4">
+      <div class="mx-auto flex max-w-[1120px] flex-col gap-8 rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-[0_40px_120px_-60px_rgba(6,11,25,0.9)] backdrop-blur-2xl lg:flex-row lg:gap-12">
+        <div class="flex flex-1 flex-col gap-4">
+          <div class="space-y-4">
+            <span class="section-label bg-white/10 text-white/70">Support the project</span>
+            <h2 class="font-display text-3xl text-white sm:text-4xl">Fuel the ShindoClient roadmap</h2>
+            <p class="text-base text-white/70">
+              Donations help pay recurring domain renewals and will fund a dedicated paid server for the API and websocket layer, ensuring the
+              launcher infrastructure stays reliable as the community grows.
+            </p>
+            <p class="text-sm text-white/50">
+              There’s zero obligation to donate—any amount already makes a difference and motivates me to keep shipping new features and
+              innovative systems for everyone.
+            </p>
+          </div>
+        </div>
+        <div class="flex-1 rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-3 shadow-inner shadow-black/30">
+          <div class="overflow-hidden rounded-2xl border border-white/10 bg-surface-elevated/40">
+            <iframe
+              id="kofiframe"
+              src="https://ko-fi.com/mikidevahm/?hidefeed=true&widget=true&embed=true&preview=true"
+              style="border:0;width:100%;padding:0;background:transparent;"
+              height="712"
+              title="mikidevahm"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap" class="px-4">
+      <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
+        <div class="flex flex-col gap-3 text-center">
+          <span class="section-label mx-auto bg-white/10 text-white/60">Upcoming Features</span>
+          <h2 class="font-display text-3xl text-white sm:text-4xl">Next experiments shipping soon</h2>
+          <p class="mx-auto max-w-3xl text-base text-white/65">
+            {{ roadmapHeadline }}
+          </p>
+          <p v-if="roadmapUpdatedLabel" class="text-sm text-white/40">
+            Last update · {{ roadmapUpdatedLabel }}
+          </p>
+        </div>
+        <div
+          v-if="roadmapFeatures.length"
+          class="grid gap-5 md:grid-cols-2"
+        >
+          <article
+            v-for="feature in roadmapFeatures"
+            :key="feature.id"
+            class="glass-panel flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-semibold text-white">{{ feature.title }}</h3>
+              </div>
+              <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+                {{ feature.status }}
+              </span>
+            </div>
+            <p class="text-sm text-white/65">
+              {{ feature.description }}
+            </p>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs font-semibold text-white/60">
+                <span>Progress</span>
+                <span>{{ feature.progress }}%</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/10">
+                <div class="h-full rounded-full bg-accent-500 transition-[width] duration-500" :style="{ width: `${feature.progress}%` }"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div v-else class="glass-panel rounded-3xl border border-white/10 bg-white/5 p-6 text-center text-sm text-white/60">
+          Roadmap coming soon. Check back shortly!
+        </div>
+      </div>
+    </section>
+
     <section id="faq" class="px-4">
       <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
         <div class="flex flex-col gap-4 text-center">
@@ -270,15 +350,31 @@ import heroMods from 'public/screenshots/modmenu.webp'
 import heroBackgrounds from 'public/screenshots/backgrounds.webp'
 import { scrollToHash } from '@/scripts/scrollTo'
 import { useClientMeta } from '@/composables/useClientMeta'
+import { useDevRoadmap } from '@/composables/useDevRoadmap'
 import { Check, MonitorSmartphone, Music, GlobeLock, ShieldCheck, UserRoundPen } from 'lucide-vue-next'
 
 const runtimeConfig = useRuntimeConfig()
 const { data: clientMeta } = useClientMeta()
+const { data: devRoadmap } = useDevRoadmap()
 
 const downloadUrl = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
 const discordUrl = computed(() => clientMeta.value?.discord ?? (runtimeConfig.public.discordUrl as string))
 const versionLabel = computed(() => clientMeta.value?.latestversion ? `Version ${clientMeta.value.latestversion}` : 'Version 5.0'
 )
+
+const roadmapFeatures = computed(() => devRoadmap.value?.features ?? [])
+const roadmapHeadline = computed(() => devRoadmap.value?.headline ?? '')
+const roadmapUpdatedLabel = computed(() => {
+  const isoDate = devRoadmap.value?.lastUpdated
+  if (!isoDate) return ''
+  const date = new Date(isoDate)
+  if (Number.isNaN(date.getTime())) return ''
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(date)
+})
 
 type FeatureHighlight = {
   title: string

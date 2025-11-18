@@ -25,17 +25,9 @@ const rawDiscordHref = computed(() => clientMeta.value?.discord ?? (runtimeConfi
 
 const discordHref = computed(() => {
   const raw = (rawDiscordHref.value ?? '').trim()
-  if (!raw) return DEFAULT_DISCORD_INVITE
-
-  const absolute = /^https?:\/\//i.test(raw) ? raw : `https://${raw.replace(/^\/+/, '')}`
-
   try {
-    const url = new URL(absolute)
-    const normalizedPath = url.pathname.replace(/\/+$/, '').toLowerCase()
-    const isInternalDiscordPath =
-      normalizedPath === '/discord' && ['shindoclient.com', 'www.shindoclient.com'].includes(url.hostname)
-
-    return isInternalDiscordPath ? DEFAULT_DISCORD_INVITE : url.href
+    const url = new URL(raw)
+    return url.href
   } catch {
     return DEFAULT_DISCORD_INVITE
   }
