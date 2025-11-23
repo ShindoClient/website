@@ -1,7 +1,7 @@
 <template>
   <footer class="px-4 pb-10 pt-20">
     <div
-      class="glass-panel mx-auto flex w-full max-w-[1120px] flex-col gap-8 overflow-hidden rounded-3xl border border-white/10 bg-surface-elevated/90 px-6 py-8 text-sm text-white/70 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.8)] backdrop-blur-2xl md:flex-row md:items-center md:justify-between md:px-10"
+      class="glass-panel mx-auto flex w-full max-w-[1120px] flex-col gap-8 overflow-hidden rounded-3xl border border-white/10 bg-surface-elevated/90 px-6 py-8 text-sm text-white/70 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.8)] backdrop-blur-2xl md:flex-row md:items-center md:justify-between md:px-10 animate-on-scroll"
     >
       <div>
         <p class="font-display text-lg font-semibold text-white">ShindoClient</p>
@@ -15,11 +15,11 @@
           <div class="h-px w-10 bg-white/10 md:hidden"></div>
         </div>
         <div class="flex items-center gap-4 text-white/70">
-          <NuxtLink to="/download" class="transition hover:text-white">Download</NuxtLink>
-          <a href="https://github.com/ShindoClient" target="_blank" rel="noopener" class="transition hover:text-white">
+          <NuxtLink to="/download" class="transition-all duration-300 hover:text-white hover:scale-105">Download</NuxtLink>
+          <a href="https://github.com/ShindoClient" target="_blank" rel="noopener" class="transition-all duration-300 hover:text-white hover:scale-105">
             GitHub
           </a>
-          <NuxtLink to="/discord" class="transition hover:text-white">Discord</NuxtLink>
+          <NuxtLink to="/discord" class="transition-all duration-300 hover:text-white hover:scale-105">Discord</NuxtLink>
         </div>
       </div>
     </div>
@@ -28,3 +28,13 @@
     </p>
   </footer>
 </template>
+
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useScrollReveal } from '@/composables/useScrollReveal'
+
+onMounted(() => {
+  const { observeElements } = useScrollReveal()
+  observeElements('.animate-on-scroll')
+})
+</script>

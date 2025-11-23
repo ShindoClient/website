@@ -46,7 +46,8 @@ export default {
       },
       animation: {
         marquee: 'marquee 18s linear infinite',
-        float: 'float 14s ease-in-out infinite'
+        float: 'float 14s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 3s ease-in-out infinite'
       },
       keyframes: {
         marquee: {
@@ -56,6 +57,10 @@ export default {
         float: {
           '0%, 100%': { transform: 'translate3d(0, -4px, 0)' },
           '50%': { transform: 'translate3d(0, 6px, 0)' }
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+          '50%': { opacity: '0.8', transform: 'scale(1.05)' }
         }
       }
     }

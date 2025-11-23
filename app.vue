@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 import { Analytics } from '@vercel/analytics/nuxt'
+import { onMounted } from 'vue'
+import { useScrollReveal } from '@/composables/useScrollReveal'
+
+onMounted(() => {
+  const { observeElements } = useScrollReveal()
+  // Observar elementos com animação de scroll
+  observeElements('.animate-on-scroll')
+})
 </script>
 <template>
   <SpeedInsights/>

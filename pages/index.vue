@@ -1,27 +1,33 @@
 <template>
   <main class="space-y-24 pb-24 lg:space-y-28 lg:pb-32">
-    <section id="hero" class="relative px-4">
-      <div class="mx-auto grid max-w-[1120px] gap-12 rounded-[40px] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl md:grid-cols-[minmax(0,1fr)_420px] md:p-12">
-        <div class="flex flex-col gap-8">
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="section-label bg-white/10 text-white/60">{{ versionLabel }}</span>
-            <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/50">
+    <section id="hero" class="relative px-4 pt-8">
+      <div class="hero-container glass-panel mx-auto max-w-[1120px] rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-2xl md:grid md:grid-cols-[minmax(0,1fr)_400px] md:gap-12 md:p-10 animate-on-scroll">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-wrap items-center gap-2.5 animate-on-scroll" style="transition-delay: 0.1s">
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+              {{ versionLabel }}
+            </span>
+            <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/50">
               1.8.9
             </span>
           </div>
-          <div>
-            <h1 class="font-display text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl">
-              Modern & Open-source Minecraft Client. Built for competitivity.
+          <div class="animate-on-scroll" style="transition-delay: 0.2s">
+            <h1 class="font-display text-4xl leading-[1.1] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+              Modern & Open-source
+              <span class="block bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
+                Minecraft Client
+              </span>
+              <span class="block text-white/90">Built for competitivity.</span>
             </h1>
-            <p class="mt-5 max-w-xl text-lg text-white/70">
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
               ShindoClient delivers a modern launcher experience inspired by Lunar, Feather and LabyMod, without sacrificing
-              the openness of the community. Locked-down security, lightning-fast tech, and visuals that make every login feel premium.
+              the openness of the community.
             </p>
           </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <NuxtLink :to="downloadUrl" class="button-primary">
+          <div class="flex flex-wrap items-center gap-3 animate-on-scroll" style="transition-delay: 0.3s">
+            <NuxtLink :to="downloadUrl" class="button-primary group">
               <span>Download</span>
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
@@ -34,13 +40,13 @@
             </NuxtLink>
           </div>
         </div>
-        <div class="relative">
-          <div class="pointer-events-none absolute inset-0 -translate-y-6 rounded-[36px] bg-panel-glow blur-3xl"></div>
-          <div class="relative flex items-center justify-center overflow-hidden rounded-[32px] border border-white/10 bg-white/10 py-12 shadow-glow sm:py-16">
+        <div class="relative animate-on-scroll md:flex md:items-center md:justify-center" style="transition-delay: 0.4s">
+          <div class="pointer-events-none absolute inset-0 -translate-y-4 -translate-x-4 rounded-3xl bg-gradient-to-br from-accent-500/20 via-accent-600/10 to-transparent blur-3xl opacity-60"></div>
+          <div class="relative flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-8 shadow-[0_20px_60px_-30px_rgba(90,62,247,0.3)] backdrop-blur-xl transition-all duration-500 hover:border-white/20 hover:shadow-[0_25px_70px_-30px_rgba(90,62,247,0.4)] hover:scale-[1.02]">
             <img
               src="/logo.png"
               alt="ShindoClient logo"
-              class="h-32 w-auto sm:h-40"
+              class="h-28 w-auto sm:h-36 transition-transform duration-700 hover:scale-110"
               loading="lazy"
             />
           </div>
@@ -50,7 +56,7 @@
 
     <section id="features" class="px-4">
       <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
-        <div class="flex flex-col gap-4 text-center">
+        <div class="flex flex-col gap-4 text-center animate-on-scroll">
           <span class="section-label mx-auto bg-white/10 text-white/60">Feature Highlights</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">
             Built like a pro launcher. Tuned for open-source experimentation.
@@ -59,34 +65,35 @@
             Every subsystem was rebuilt for stability, security, and scalability, to a modular client-side architecture tuned for minimal input latency.
           </p>
         </div>
-        <div class="grid auto-rows-[minmax(0,1fr)] gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div class="grid auto-rows-[minmax(0,1fr)] gap-3 md:grid-cols-2 xl:grid-cols-3">
           <div
-            v-for="feature in featureHighlights"
+            v-for="(feature, index) in featureHighlights"
             :key="feature.title"
-            class="glass-panel relative flex h-full min-h-[260px] flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-lg shadow-black/20"
+            class="feature-card glass-panel group relative flex h-full flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/20 transition-all duration-500 ease-out animate-on-scroll hover:border-white/25 hover:bg-white/[0.08] hover:shadow-xl hover:shadow-accent-500/10"
+            :style="`transition-delay: ${index * 0.1}s`"
           >
-            <div class="flex items-center gap-3">
-              <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-accent-200">
+            <div class="flex items-center gap-3 pb-2 border-b border-white/10 group-hover:border-white/20 transition-colors duration-500">
+              <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-accent-500/20 to-accent-600/10 text-accent-300 transition-all duration-500 group-hover:from-accent-500/40 group-hover:to-accent-600/30 group-hover:scale-110 group-hover:border-accent-500/30 group-hover:shadow-lg group-hover:shadow-accent-500/20">
                 <component
                   :is="feature.icon"
-                  class="h-5 w-5"
+                  class="h-4 w-4 transition-transform duration-500 group-hover:scale-110"
                   aria-hidden="true"
-                  :size="20"
-                  :stroke-width="1.6"
+                  :size="16"
+                  :stroke-width="2"
                 />
               </div>
-              <h3 class="text-lg font-semibold text-white">{{ feature.title }}</h3>
+              <h3 class="text-sm font-semibold text-white leading-tight transition-colors duration-500 group-hover:text-accent-300">{{ feature.title }}</h3>
             </div>
-            <p class="text-sm leading-relaxed text-white/65 text-pretty break-words">
+            <p class="text-xs leading-relaxed text-white/60 text-pretty break-words transition-colors duration-500 group-hover:text-white/70">
               {{ feature.description }}
             </p>
             <ul
               v-if="feature.points"
-              class="mt-1 space-y-1.5 text-[0.92rem] text-white/60 leading-relaxed text-pretty"
+              class="mt-2 space-y-1 text-[0.75rem] text-white/55 leading-relaxed"
             >
-              <li v-for="point in feature.points" :key="point" class="flex items-start gap-2.5">
-                <Check class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent-200" :stroke-width="2" />
-                <span class="break-words">{{ point }}</span>
+              <li v-for="point in feature.points" :key="point" class="flex items-start gap-2 transition-all duration-500 group-hover:text-white/70">
+                <Check class="mt-0.5 h-3 w-3 flex-shrink-0 text-accent-400 transition-all duration-500 group-hover:text-accent-300 group-hover:scale-110" :stroke-width="2.5" />
+                <span class="break-words leading-snug">{{ point }}</span>
               </li>
             </ul>
           </div>
@@ -96,7 +103,7 @@
 
     <section id="showcase" class="px-4">
       <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
-        <div class="flex flex-col gap-4 text-center">
+        <div class="flex flex-col gap-4 text-center animate-on-scroll">
           <span class="section-label mx-auto bg-white/10 text-white/60">Visual Showcase</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">Polished UI inspired by premium clients</h2>
           <p class="mx-auto max-w-2xl text-base text-white/65">
@@ -112,7 +119,7 @@
         >
           <div class="relative">
             <div
-              class="flex transition-transform duration-500 ease-out"
+              class="flex transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
               :style="{ transform: `translateX(-${activeSlide * 100}%)` }"
             >
               <article
@@ -143,21 +150,21 @@
 
             <button
               type="button"
-              class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition hover:border-white/40 hover:bg-black/50"
+              class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition-all duration-300 hover:border-white/40 hover:bg-black/50 hover:scale-110 active:scale-95"
               aria-label="Show previous slide"
               @click="prevSlide(); restartCarousel()"
             >
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <svg class="h-4 w-4 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
             <button
               type="button"
-              class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition hover:border-white/40 hover:bg-black/50"
+              class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition-all duration-300 hover:border-white/40 hover:bg-black/50 hover:scale-110 active:scale-95"
               aria-label="Show next slide"
               @click="nextSlide(); restartCarousel()"
             >
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <svg class="h-4 w-4 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
@@ -167,8 +174,8 @@
               v-for="(_, index) in showcaseSlides"
               :key="`dot-${index}`"
               type="button"
-              class="h-2.5 w-2.5 rounded-full transition"
-              :class="activeSlide === index ? 'bg-white' : 'bg-white/25 hover:bg-white/40'"
+              class="h-2.5 w-2.5 rounded-full transition-all duration-300"
+              :class="activeSlide === index ? 'bg-white scale-125' : 'bg-white/25 hover:bg-white/40 hover:scale-110'"
               :aria-label="`Go to slide ${index + 1}`"
               @click="setSlide(index); restartCarousel()"
             />
@@ -178,7 +185,7 @@
     </section>
 
     <section id="upgrade" class="px-4">
-      <div class="mx-auto max-w-[1120px] overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-accent-700/60 via-accent-500/40 to-surface-elevated/80 p-10 shadow-[0_40px_100px_-40px_rgba(90,62,247,0.6)]">
+      <div class="mx-auto max-w-[1120px] overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-accent-700/60 via-accent-500/40 to-surface-elevated/80 p-10 shadow-[0_40px_100px_-40px_rgba(90,62,247,0.6)] animate-on-scroll transition-transform duration-500 hover:scale-[1.02]">
         <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_320px] md:items-center">
           <div class="space-y-4">
             <span class="section-label bg-white/10 text-white/70">Upgrade Today</span>
@@ -208,31 +215,42 @@
     </section>
 
     <section id="support" class="px-4">
-      <div class="mx-auto flex max-w-[1120px] flex-col gap-8 rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-[0_40px_120px_-60px_rgba(6,11,25,0.9)] backdrop-blur-2xl lg:flex-row lg:gap-12">
-        <div class="flex flex-1 flex-col gap-4">
-          <div class="space-y-4">
-            <span class="section-label bg-white/10 text-white/70">Support the project</span>
-            <h2 class="font-display text-3xl text-white sm:text-4xl">Fuel the ShindoClient roadmap</h2>
-            <p class="text-base text-white/70">
-              Donations help pay recurring domain renewals and will fund a dedicated paid server for the API and websocket layer, ensuring the
-              launcher infrastructure stays reliable as the community grows.
+      <div class="mx-auto max-w-[1120px] flex flex-col gap-6">
+        <div class="flex flex-col gap-4 text-center animate-on-scroll">
+          <span class="section-label mx-auto bg-white/10 text-white/60">Support the project</span>
+          <h2 class="font-display text-3xl text-white sm:text-4xl">Fuel the ShindoClient roadmap</h2>
+        </div>
+        <div class="support-card glass-panel group mx-auto w-full rounded-xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 transition-all duration-300 backdrop-blur-2xl lg:flex lg:flex-row lg:gap-8 lg:p-8 animate-on-scroll hover:border-white/20 hover:bg-white/[0.08]">
+          <div class="flex flex-1 flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-accent-500/20 to-accent-600/10 text-accent-300">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-semibold text-white">Help us grow</h3>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-white/65">
+              Donations help pay recurring domain renewals and fund a dedicated server for the API and websocket layer, ensuring reliable infrastructure as the community grows.
             </p>
-            <p class="text-sm text-white/50">
-              There’s zero obligation to donate—any amount already makes a difference and motivates me to keep shipping new features and
-              innovative systems for everyone.
+            <p class="text-xs text-white/50 leading-relaxed">
+              There's zero obligation to donate—any amount makes a difference and motivates continued development.
             </p>
           </div>
-        </div>
-        <div class="flex-1 rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-3 shadow-inner shadow-black/30">
-          <div class="overflow-hidden rounded-2xl border border-white/10 bg-surface-elevated/40">
-            <iframe
-              id="kofiframe"
-              src="https://ko-fi.com/mikidevahm/?hidefeed=true&widget=true&embed=true&preview=true"
-              style="border:0;width:100%;padding:0;background:transparent;"
-              height="712"
-              title="mikidevahm"
-              loading="lazy"
-            ></iframe>
+          <div class="flex-1 rounded-xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-2 shadow-inner shadow-black/30 lg:max-w-md">
+            <div class="overflow-hidden rounded-lg border border-white/10 bg-surface-elevated/40">
+              <iframe
+                id="kofiframe"
+                src="https://ko-fi.com/mikidevahm/?hidefeed=true&widget=true&embed=true&preview=true"
+                style="border:0;width:100%;padding:0;background:transparent;"
+                height="400"
+                title="mikidevahm"
+                loading="lazy"
+                class="w-full"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -240,7 +258,7 @@
 
     <section id="roadmap" class="px-4">
       <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
-        <div class="flex flex-col gap-3 text-center">
+        <div class="flex flex-col gap-3 text-center animate-on-scroll">
           <span class="section-label mx-auto bg-white/10 text-white/60">Upcoming Features</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">Next experiments shipping soon</h2>
           <p class="mx-auto max-w-3xl text-base text-white/65">
@@ -252,31 +270,30 @@
         </div>
         <div
           v-if="roadmapFeatures.length"
-          class="grid gap-5 md:grid-cols-2"
+          class="grid gap-3 md:grid-cols-2"
         >
           <article
-            v-for="feature in roadmapFeatures"
+            v-for="(feature, index) in roadmapFeatures"
             :key="feature.id"
-            class="glass-panel flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
+            class="roadmap-card glass-panel group flex h-full flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/20 transition-all duration-500 ease-out animate-on-scroll hover:border-white/25 hover:bg-white/[0.08] hover:shadow-xl hover:shadow-accent-500/10"
+            :style="`transition-delay: ${index * 0.1}s`"
           >
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-semibold text-white">{{ feature.title }}</h3>
-              </div>
-              <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+            <div class="flex items-start justify-between gap-2 pb-2 border-b border-white/10 group-hover:border-white/20 transition-colors duration-500">
+              <h3 class="text-sm font-semibold text-white leading-tight flex-1 transition-colors duration-500 group-hover:text-accent-300">{{ feature.title }}</h3>
+              <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/70 whitespace-nowrap flex-shrink-0 transition-all duration-500 group-hover:border-accent-500/30 group-hover:bg-accent-500/10 group-hover:text-accent-300">
                 {{ feature.status }}
               </span>
             </div>
-            <p class="text-sm text-white/65">
+            <p class="text-xs leading-relaxed text-white/60 text-pretty break-words flex-1 transition-colors duration-500 group-hover:text-white/70">
               {{ feature.description }}
             </p>
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs font-semibold text-white/60">
+            <div class="space-y-1 mt-auto pt-1.5">
+              <div class="flex items-center justify-between text-[0.7rem] font-medium text-white/50 transition-colors duration-500 group-hover:text-white/65">
                 <span>Progress</span>
-                <span>{{ feature.progress }}%</span>
+                <span class="text-accent-400 font-semibold transition-colors duration-500 group-hover:text-accent-300">{{ feature.progress }}%</span>
               </div>
-              <div class="h-2 rounded-full bg-white/10">
-                <div class="h-full rounded-full bg-accent-500 transition-[width] duration-500" :style="{ width: `${feature.progress}%` }"></div>
+              <div class="h-1 rounded-full bg-white/10 overflow-hidden transition-all duration-500 group-hover:bg-white/15">
+                <div class="h-full rounded-full bg-gradient-to-r from-accent-500 to-accent-400 transition-all duration-700 ease-out group-hover:from-accent-400 group-hover:to-accent-300 group-hover:shadow-sm group-hover:shadow-accent-400/50" :style="{ width: `${feature.progress}%` }"></div>
               </div>
             </div>
           </article>
@@ -289,7 +306,7 @@
 
     <section id="faq" class="px-4">
       <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
-        <div class="flex flex-col gap-4 text-center">
+        <div class="flex flex-col gap-4 text-center animate-on-scroll">
           <span class="section-label mx-auto bg-white/10 text-white/60">FAQ</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">All the details before you drop into queue</h2>
         </div>
@@ -297,7 +314,8 @@
             <div
               v-for="(faq, index) in faqs"
               :key="faq.question"
-              class="glass-panel glass-panel--static glass-panel--loose rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-white/20"
+              class="glass-panel glass-panel--static glass-panel--loose rounded-xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-white/20 hover:scale-[1.02] animate-on-scroll"
+              :style="`transition-delay: ${index * 0.1}s`"
             >
               <button
                 type="button"
@@ -351,6 +369,7 @@ import heroBackgrounds from 'public/screenshots/backgrounds.webp'
 import { scrollToHash } from '@/scripts/scrollTo'
 import { useClientMeta } from '@/composables/useClientMeta'
 import { useDevRoadmap } from '@/composables/useDevRoadmap'
+import { useScrollReveal } from '@/composables/useScrollReveal'
 import { Check, MonitorSmartphone, Music, GlobeLock, ShieldCheck, UserRoundPen } from 'lucide-vue-next'
 
 const runtimeConfig = useRuntimeConfig()
@@ -406,11 +425,11 @@ const featureHighlights = [
   {
     title: 'Network Tweaker',
     description:
-      'The client-side Internet Tweaker maps your network resources and continuously retunes sockets to keep routes stable and responsive.',
+      'Optimize network performance with automatic socket tuning and adaptive packet scheduling.',
     icon: GlobeLock,
     points: [
-      'Declare bandwidth, QoS priorities and hardware limits so the client auto-adjusts buffers, pacing and retries per profile.',
-      'Enable aggressive presets that tighten packet scheduling and TCP windows to improve in-game responsiveness.'
+      'Auto-adjusts buffers and TCP windows for better responsiveness.',
+      'Aggressive presets for competitive gameplay.'
     ]
   },
   {
@@ -540,7 +559,11 @@ const restartCarousel = () => {
   startCarousel()
 }
 
-onMounted(startCarousel)
+onMounted(() => {
+  startCarousel()
+  const { observeElements } = useScrollReveal()
+  observeElements('.animate-on-scroll')
+})
 onBeforeUnmount(stopCarousel)
 
 useSeoMeta({
