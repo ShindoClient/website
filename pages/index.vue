@@ -1,122 +1,200 @@
-<template>
-  <main class="space-y-24 pb-24 lg:space-y-28 lg:pb-32">
-    <section id="hero" class="relative px-4 pt-8">
-      <div class="hero-container glass-panel mx-auto max-w-[1120px] rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-2xl md:grid md:grid-cols-[minmax(0,1fr)_400px] md:gap-12 md:p-10 animate-on-scroll">
-        <div class="flex flex-col gap-6">
-          <div class="flex flex-wrap items-center gap-2.5 animate-on-scroll" style="transition-delay: 0.1s">
-            <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
-              {{ versionLabel }}
-            </span>
-            <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/50">
-              1.8.9
-            </span>
-          </div>
-          <div class="animate-on-scroll" style="transition-delay: 0.2s">
-            <h1 class="font-display text-4xl leading-[1.1] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-              Modern & Open-source
-              <span class="block bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
-                Minecraft Client
-              </span>
-              <span class="block text-white/90">Built for competitivity.</span>
-            </h1>
-            <p class="mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
-              ShindoClient delivers a modern launcher experience inspired by Lunar, Feather and LabyMod, without sacrificing
-              the openness of the community.
-            </p>
-          </div>
-          <div class="flex flex-wrap items-center gap-3 animate-on-scroll" style="transition-delay: 0.3s">
-            <NuxtLink :to="downloadUrl" class="button-primary group">
-              <span>Download</span>
-              <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M5 12h14" />
-                <path d="M12 5l7 7-7 7" />
-              </svg>
-            </NuxtLink>
-            <button type="button" class="button-ghost" @click="scrollToSection('#features')">
-              Explore Features
-            </button>
-            <NuxtLink :to="discordUrl" target="_blank" class="button-ghost border-white/20 bg-white/10 hover:border-white/30">
-              Join Discord
-            </NuxtLink>
-          </div>
-        </div>
-        <div class="relative animate-on-scroll md:flex md:items-center md:justify-center" style="transition-delay: 0.4s">
-          <div class="pointer-events-none absolute inset-0 -translate-y-4 -translate-x-4 rounded-3xl bg-gradient-to-br from-accent-500/20 via-accent-600/10 to-transparent blur-3xl opacity-60"></div>
-          <div class="relative flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-8 shadow-[0_20px_60px_-30px_rgba(90,62,247,0.3)] backdrop-blur-xl transition-all duration-500 hover:border-white/20 hover:shadow-[0_25px_70px_-30px_rgba(90,62,247,0.4)] hover:scale-[1.02]">
-            <img
-              src="/logo.png"
-              alt="ShindoClient logo"
-              class="h-28 w-auto sm:h-36 transition-transform duration-700 hover:scale-110"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+﻿<template>
+  <main class="relative overflow-hidden px-4 pb-28 pt-16 text-white">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(127,95,255,0.16),transparent_45%),radial-gradient(circle_at_82%_8%,rgba(45,27,105,0.3),transparent_38%),linear-gradient(180deg,rgba(7,8,18,0.95),rgba(5,6,14,0.98))]"
+      ></div>
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
+      <div class="absolute left-[6%] top-12 h-24 w-24 rounded-full bg-accent-500/25 blur-[90px]"></div>
+      <div class="absolute right-[8%] top-24 h-28 w-28 rounded-full bg-[#2D1B69]/30 blur-[100px]"></div>
+    </div>
 
-    <section id="features" class="px-4">
-      <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
+    <div class="mx-auto flex max-w-[1180px] flex-col gap-16 lg:gap-20">
+      <section
+        id="hero"
+        class="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#11142f]/90 via-[#0c0f26]/92 to-[#050611]/92 p-8 shadow-[0_40px_120px_-70px_rgba(7,8,20,0.9)] backdrop-blur-3xl animate-on-scroll lg:p-12"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 opacity-80 [background:radial-gradient(circle_at_22%_22%,rgba(162,107,255,0.18),transparent_48%),radial-gradient(circle_at_78%_18%,rgba(95,74,255,0.16),transparent_48%),linear-gradient(135deg,rgba(45,27,105,0.35),rgba(5,6,18,0.85))]"
+        ></div>
+        <div
+          class="absolute inset-0 opacity-25 [mask-image:radial-gradient(circle_at_center,black,transparent_75%)] bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.06)_0,rgba(255,255,255,0.06)_1px,transparent_1px,transparent_32px)]"
+        ></div>
+
+        <div class="relative grid gap-10 lg:grid-cols-[1.25fr_0.95fr] lg:items-center">
+          <div class="space-y-6">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-label bg-white/5 text-white/70">
+                <Sparkles class="h-4 w-4 text-accent-300" />
+                {{ versionLabel }}
+              </span>
+              <span
+                class="rounded-full border border-accent-500/25 bg-accent-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent-50"
+              >
+                1.8.9
+              </span>
+              <span
+                class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/70"
+              >
+                Open-source
+              </span>
+            </div>
+
+            <div class="space-y-3">
+              <h1 class="font-display text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
+                <span class="block text-accent-100">Next-gen</span>
+                Minecraft Client
+                <span class="block text-white/80">Built for competitive PvP</span>
+              </h1>
+            </div>
+
+            <p class="max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
+              A compact, performance-tuned client inspired by Soar and Feather. Secure manifests, responsive modules
+              and a polished HUD editor ship together for a premium experience.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <NuxtLink
+                :to="downloadUrl"
+                class="button-primary group bg-gradient-to-r from-accent-500 via-accent-600 to-[#2D1B69] text-sm font-semibold shadow-[0_24px_80px_-40px_rgba(127,95,255,0.8)]"
+              >
+                <Download class="h-4 w-4" />
+                <span>Download</span>
+                <ArrowUpRight class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </NuxtLink>
+              <button
+                type="button"
+                class="button-ghost group border-white/20 bg-white/5 text-sm font-semibold text-white"
+                @click="scrollToSection('#features')"
+              >
+                <ArrowUpRight class="h-4 w-4 text-accent-200" />
+                <span>Explore features</span>
+              </button>
+              <NuxtLink
+                to="/discord"
+                class="button-ghost border-accent-500/25 bg-accent-500/10 text-sm font-semibold text-accent-100 transition-all duration-300 hover:border-accent-500/40 hover:bg-accent-500/20"
+              >
+                <RadioTower class="h-4 w-4" />
+                <span>Join Discord</span>
+              </NuxtLink>
+            </div>
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-6 shadow-[0_25px_90px_-45px_rgba(127,95,255,0.4)] backdrop-blur-2xl"
+          >
+            <div class="absolute inset-0 opacity-40 blur-3xl bg-gradient-to-br from-accent-500/25 via-transparent to-[#2D1B69]/30"></div>
+            <div class="relative flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.2)]"></span>
+                  <p class="text-xs uppercase tracking-[0.22em] text-white/60">Stable release</p>
+                </div>
+                <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-[0.2em] text-white/70">
+                  Live
+                </span>
+              </div>
+              <div
+                class="relative flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a1f3d]/70 via-[#0f142c]/80 to-[#0a0e24]/90 p-8 shadow-lg shadow-black/30"
+              >
+                <div class="pointer-events-none absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_30%_20%,rgba(127,95,255,0.25),transparent_45%)]"></div>
+                <img
+                  src="/logo.png"
+                  alt="ShindoClient logo"
+                  class="relative h-28 w-auto sm:h-36 transition-transform duration-700 hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <div class="grid gap-2 sm:grid-cols-2">
+                <div class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/65">
+                  <span class="font-semibold text-white">Auto updates</span>
+                  <p>Manifest refresh on launch</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/65">
+                  <span class="font-semibold text-white">Low latency</span>
+                  <p>Adaptive packet scheduling</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="relative space-y-10">
         <div class="flex flex-col gap-4 text-center animate-on-scroll">
-          <span class="section-label mx-auto bg-white/10 text-white/60">Feature Highlights</span>
-          <h2 class="font-display text-3xl text-white sm:text-4xl">
-            Built like a pro launcher. Tuned for open-source experimentation.
-          </h2>
+          <span class="section-label mx-auto bg-white/5 text-white/70">
+            <Sparkles class="h-4 w-4 text-accent-300" />
+            Feature Highlights
+          </span>
+          <h2 class="font-display text-3xl text-white sm:text-4xl">The Ultimate Experience</h2>
           <p class="mx-auto max-w-2xl text-base text-white/65">
-            Every subsystem was rebuilt for stability, security, and scalability, to a modular client-side architecture tuned for minimal input latency.
+            Systems tuned for stability, security and modularity. Every feature is designed to enhance your gameplay without compromise.
           </p>
         </div>
-        <div class="grid auto-rows-[minmax(0,1fr)] gap-3 md:grid-cols-2 xl:grid-cols-3">
+
+        <div class="grid auto-rows-[minmax(0,1fr)] gap-4 md:grid-cols-2 xl:grid-cols-3">
           <div
             v-for="(feature, index) in featureHighlights"
             :key="feature.title"
-            class="feature-card glass-panel group relative flex h-full flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/20 transition-all duration-500 ease-out animate-on-scroll hover:border-white/25 hover:bg-white/[0.08] hover:shadow-xl hover:shadow-accent-500/10"
+            class="feature-card group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0c1024]/70 via-[#0b0f20]/70 to-[#090c1a]/80 p-5 shadow-lg shadow-black/30 transition-all duration-500 ease-out animate-on-scroll hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-[0_25px_80px_-50px_rgba(127,95,255,0.7)]"
             :style="`transition-delay: ${index * 0.1}s`"
           >
-            <div class="flex items-center gap-3 pb-2 border-b border-white/10 group-hover:border-white/20 transition-colors duration-500">
-              <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-accent-500/20 to-accent-600/10 text-accent-300 transition-all duration-500 group-hover:from-accent-500/40 group-hover:to-accent-600/30 group-hover:scale-110 group-hover:border-accent-500/30 group-hover:shadow-lg group-hover:shadow-accent-500/20">
+            <div class="pointer-events-none absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(162,107,255,0.35),transparent_38%)]"></div>
+            <div class="relative flex items-center gap-3 pb-2 border-b border-white/10 transition-colors duration-500 group-hover:border-white/20">
+              <div
+                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-accent-500/25 to-accent-600/20 text-accent-200 transition-all duration-500 group-hover:from-accent-500/40 group-hover:to-accent-600/35 group-hover:scale-110 group-hover:border-accent-500/30 group-hover:shadow-lg group-hover:shadow-accent-500/30"
+              >
                 <component
                   :is="feature.icon"
-                  class="h-4 w-4 transition-transform duration-500 group-hover:scale-110"
+                  class="h-5 w-5 transition-transform duration-500 group-hover:scale-110"
                   aria-hidden="true"
-                  :size="16"
+                  :size="18"
                   :stroke-width="2"
                 />
               </div>
-              <h3 class="text-sm font-semibold text-white leading-tight transition-colors duration-500 group-hover:text-accent-300">{{ feature.title }}</h3>
+              <h3 class="text-base font-semibold text-white leading-tight transition-colors duration-500 group-hover:text-accent-200">
+                {{ feature.title }}
+              </h3>
             </div>
-            <p class="text-xs leading-relaxed text-white/60 text-pretty break-words transition-colors duration-500 group-hover:text-white/70">
+            <p class="relative text-sm leading-relaxed text-white/60 text-pretty break-words transition-colors duration-500 group-hover:text-white/75">
               {{ feature.description }}
             </p>
-            <ul
-              v-if="feature.points"
-              class="mt-2 space-y-1 text-[0.75rem] text-white/55 leading-relaxed"
-            >
-              <li v-for="point in feature.points" :key="point" class="flex items-start gap-2 transition-all duration-500 group-hover:text-white/70">
-                <Check class="mt-0.5 h-3 w-3 flex-shrink-0 text-accent-400 transition-all duration-500 group-hover:text-accent-300 group-hover:scale-110" :stroke-width="2.5" />
+            <ul v-if="feature.points" class="relative mt-2 space-y-1.5 text-[0.8rem] text-white/55 leading-relaxed">
+              <li
+                v-for="point in feature.points"
+                :key="point"
+                class="flex items-start gap-2 transition-all duration-500 group-hover:text-white/70"
+              >
+                <Check
+                  class="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent-300 transition-all duration-500 group-hover:text-accent-200 group-hover:scale-110"
+                  :stroke-width="2.5"
+                />
                 <span class="break-words leading-snug">{{ point }}</span>
               </li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="showcase" class="px-4">
-      <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
+      <section id="showcase" class="relative space-y-8">
         <div class="flex flex-col gap-4 text-center animate-on-scroll">
-          <span class="section-label mx-auto bg-white/10 text-white/60">Visual Showcase</span>
-          <h2 class="font-display text-3xl text-white sm:text-4xl">Polished UI inspired by premium clients</h2>
+          <span class="section-label mx-auto bg-white/5 text-white/70">Visual Showcase</span>
+          <h2 class="font-display text-3xl text-white sm:text-4xl">Take a look at what ShindoClient has to offer</h2>
           <p class="mx-auto max-w-2xl text-base text-white/65">
-            From the animated launcher dashboard to modular HUD editing, every element is engineered to match modern Minecraft clients—while remaining fully customizable.
+            polished interfaces, customizable HUDs, and seamless performance enhancements all come together to elevate your Minecraft experience.
           </p>
         </div>
+
         <div
-          class="glass-panel glass-panel--static relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-0 shadow-[0_45px_120px_-70px_rgba(10,18,46,0.9)]"
+          class="glass-panel glass-panel--static relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#0c1026]/85 via-[#090c1e]/85 to-[#060711]/92 p-0 shadow-[0_45px_120px_-70px_rgba(10,18,46,0.9)] animate-on-scroll"
           @mouseenter="stopCarousel"
           @mouseleave="startCarousel"
           role="region"
           aria-label="Visual showcase carousel"
         >
+          <div
+            class="pointer-events-none absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,rgba(127,95,255,0.2),transparent_45%)]"
+          ></div>
           <div class="relative">
             <div
               class="flex transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
@@ -137,9 +215,10 @@
                     class="h-full w-full object-cover"
                     loading="lazy"
                   />
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
                 <div class="flex w-full flex-col justify-center gap-3 p-6 md:w-1/3 md:p-8">
-                  <span class="text-xs uppercase tracking-[0.35em] text-white/35">Showcase {{ index + 1 }}</span>
+                  <span class="text-xs uppercase tracking-[0.35em] text-white/40">Showcase {{ index + 1 }}</span>
                   <h3 class="text-xl font-semibold text-white md:text-2xl">{{ slide.title }}</h3>
                   <p class="text-sm text-white/65">
                     {{ slide.description }}
@@ -150,7 +229,7 @@
 
             <button
               type="button"
-              class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition-all duration-300 hover:border-white/40 hover:bg-black/50 hover:scale-110 active:scale-95"
+              class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-[#0b0f20]/80 p-3 text-white transition-all duration-300 hover:border-accent-500/40 hover:bg-[#0f1530]/90 hover:scale-110 active:scale-95"
               aria-label="Show previous slide"
               @click="prevSlide(); restartCarousel()"
             >
@@ -160,7 +239,7 @@
             </button>
             <button
               type="button"
-              class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-3 text-white transition-all duration-300 hover:border-white/40 hover:bg-black/50 hover:scale-110 active:scale-95"
+              class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-[#0b0f20]/80 p-3 text-white transition-all duration-300 hover:border-accent-500/40 hover:bg-[#0f1530]/90 hover:scale-110 active:scale-95"
               aria-label="Show next slide"
               @click="nextSlide(); restartCarousel()"
             >
@@ -181,116 +260,136 @@
             />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="upgrade" class="px-4">
-      <div class="mx-auto max-w-[1120px] overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-accent-700/60 via-accent-500/40 to-surface-elevated/80 p-10 shadow-[0_40px_100px_-40px_rgba(90,62,247,0.6)] animate-on-scroll transition-transform duration-500 hover:scale-[1.02]">
-        <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_320px] md:items-center">
-          <div class="space-y-4">
-            <span class="section-label bg-white/10 text-white/70">Upgrade Today</span>
-            <h2 class="font-display text-3xl text-white sm:text-4xl">Ready for the next ranked queue?</h2>
-            <p class="text-sm text-white/70">
-              Deploy the new ShindoClient build by downloading the version manifest and syncing your modules..
-            </p>
-            <ul class="space-y-3 text-sm text-white/70">
-              <li v-for="step in upgradeSteps" :key="step" class="flex items-start gap-3">
-                <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xs font-semibold text-white/80">
-                  {{ step.split('.')[0] }}
-                </span>
-                <span>{{ step.slice(step.indexOf('.') + 1).trim() }}</span>
-              </li>
-            </ul>
+      <section id="support" class="relative animate-on-scroll">
+        <div class="mx-auto max-w-[1180px] flex flex-col gap-6">
+          <div class="flex flex-col gap-4 text-center">
+            <span class="section-label mx-auto bg-white/5 text-white/70">Support the project</span>
+            <h2 class="font-display text-3xl text-white sm:text-4xl">Help us keep the project alive</h2>
           </div>
-          <div class="flex flex-col gap-3">
-            <NuxtLink to="/download" class="button-primary w-full justify-center">
-              Download Now
-            </NuxtLink>
-            <NuxtLink to="/discord" class="button-ghost w-full justify-center border-white/20 bg-white/10 hover:border-white/30">
-              Join Release Announcements
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="support" class="px-4">
-      <div class="mx-auto max-w-[1120px] flex flex-col gap-6">
-        <div class="flex flex-col gap-4 text-center animate-on-scroll">
-          <span class="section-label mx-auto bg-white/10 text-white/60">Support the project</span>
-          <h2 class="font-display text-3xl text-white sm:text-4xl">Fuel the ShindoClient roadmap</h2>
-        </div>
-        <div class="support-card glass-panel group mx-auto w-full rounded-xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 transition-all duration-300 backdrop-blur-2xl lg:flex lg:flex-row lg:gap-8 lg:p-8 animate-on-scroll hover:border-white/20 hover:bg-white/[0.08]">
-          <div class="flex flex-1 flex-col gap-4">
-            <div class="flex items-center gap-3">
-              <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-accent-500/20 to-accent-600/10 text-accent-300">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
+          <div
+            class="support-card glass-panel group mx-auto w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-[#0b0f24]/80 p-6 shadow-lg shadow-black/20 transition-all duration-300 backdrop-blur-2xl lg:flex lg:flex-row lg:gap-8 lg:p-8 hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
+          >
+            <div class="flex flex-1 flex-col gap-4">
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-accent-500/25 to-accent-600/20 text-accent-200"
+                >
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-white">Help us grow</h3>
+                </div>
               </div>
-              <div>
-                <h3 class="text-base font-semibold text-white">Help us grow</h3>
+              
+
+              <ol class="mt-2 space-y-3 text-sm leading-relaxed text-white/70">
+                <li class="flex items-start gap-3 rounded-xl border border-white/5 bg-white/5 px-3 py-2.5">
+                  <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-white/15 bg-accent-500/20 text-xs font-semibold text-accent-100">
+                    1
+                  </span>
+                  <span>
+                    Donations help cover server costs, development time, and future feature expansions.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3 rounded-xl border border-white/5 bg-white/5 px-3 py-2.5">
+                  <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-white/15 bg-accent-500/20 text-xs font-semibold text-accent-100">
+                    2
+                  </span>
+                  <span>
+                    Your support motivates continued improvements and helps maintain a high-quality experience for all users.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3 rounded-xl border border-white/5 bg-white/5 px-3 py-2.5">
+                  <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-white/15 bg-accent-500/20 text-xs font-semibold text-accent-100">
+                    3
+                  </span>
+                  <span>
+                    Every contribution, big or small, makes a significant difference in sustaining the project.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3 rounded-xl border border-white/5 bg-white/5 px-3 py-2.5">
+                  <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-white/15 bg-accent-500/20 text-xs font-semibold text-accent-100">
+                    4
+                  </span>
+                  <span>
+                    Join our community of supporters and be part of ShindoClient's journey towards excellence.
+                  </span>
+                </li>
+                <li class="flex items-start gap-3 rounded-xl border border-white/5 bg-white/5 px-3 py-2.5">
+                  <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-white/15 bg-accent-500/20 text-xs font-semibold text-accent-100">
+                    5
+                  </span>
+                  <span>
+                    Dont feel obligated to donate - your usage and feedback are already valuable contributions!
+                  </span>
+                </li>
+                <li class="flex items-start gap-3 rounded-xl border border-white/5 bg-white/5 px-3 py-2.5">
+                  <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-white/15 bg-accent-500/20 text-xs font-semibold text-accent-100">
+                    6
+                  </span>
+                  <span>
+                    Thank you for considering supporting ShindoClient and helping us create an exceptional Minecraft experience!
+                  </span>
+                </li>
+              </ol>
+            </div>
+            <div class="flex-1 rounded-xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-2 shadow-inner shadow-black/30 lg:max-w-md">
+              <div class="overflow-hidden rounded-lg border border-white/10 bg-surface-elevated/40">
+                <iframe
+                  id="kofiframe"
+                  src="https://ko-fi.com/mikidevahm/?hidefeed=true&widget=true&embed=true&preview=true"
+                  style="border:0;width:100%;padding:0;background:transparent;"
+                  height="500"
+                  title="mikidevahm"
+                  loading="lazy"
+                  class="w-full"
+                ></iframe>
               </div>
             </div>
-            <p class="text-sm leading-relaxed text-white/65">
-              Donations help pay recurring domain renewals and fund a dedicated server for the API and websocket layer, ensuring reliable infrastructure as the community grows.
-            </p>
-            <p class="text-xs text-white/50 leading-relaxed">
-              There's zero obligation to donate—any amount makes a difference and motivates continued development.
-            </p>
-          </div>
-          <div class="flex-1 rounded-xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-2 shadow-inner shadow-black/30 lg:max-w-md">
-            <div class="overflow-hidden rounded-lg border border-white/10 bg-surface-elevated/40">
-              <iframe
-                id="kofiframe"
-                src="https://ko-fi.com/mikidevahm/?hidefeed=true&widget=true&embed=true&preview=true"
-                style="border:0;width:100%;padding:0;background:transparent;"
-                height="400"
-                title="mikidevahm"
-                loading="lazy"
-                class="w-full"
-              ></iframe>
-            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="roadmap" class="px-4">
-      <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
-        <div class="flex flex-col gap-3 text-center animate-on-scroll">
-          <span class="section-label mx-auto bg-white/10 text-white/60">Upcoming Features</span>
+      </section>
+      <section id="roadmap" class="relative space-y-8 animate-on-scroll">
+        <div class="flex flex-col gap-3 text-center">
+          <span class="section-label mx-auto bg-white/5 text-white/70">Upcoming Features</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">Next experiments shipping soon</h2>
           <p class="mx-auto max-w-3xl text-base text-white/65">
             {{ roadmapHeadline }}
           </p>
           <p v-if="roadmapUpdatedLabel" class="text-sm text-white/40">
-            Last update · {{ roadmapUpdatedLabel }}
+            Last update - {{ roadmapUpdatedLabel }}
           </p>
         </div>
         <div
           v-if="roadmapFeatures.length"
-          class="grid gap-3 md:grid-cols-2"
+          class="grid gap-4 md:grid-cols-2"
         >
           <article
             v-for="(feature, index) in roadmapFeatures"
             :key="feature.id"
-            class="roadmap-card glass-panel group flex h-full flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 shadow-lg shadow-black/20 transition-all duration-500 ease-out animate-on-scroll hover:border-white/25 hover:bg-white/[0.08] hover:shadow-xl hover:shadow-accent-500/10"
+            class="roadmap-card group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0c1024]/70 via-[#0b0f20]/70 to-[#090c1a]/80 p-5 shadow-lg shadow-black/30 transition-all duration-500 ease-out animate-on-scroll hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-[0_25px_80px_-50px_rgba(127,95,255,0.7)]"
             :style="`transition-delay: ${index * 0.1}s`"
           >
-            <div class="flex items-start justify-between gap-2 pb-2 border-b border-white/10 group-hover:border-white/20 transition-colors duration-500">
-              <h3 class="text-sm font-semibold text-white leading-tight flex-1 transition-colors duration-500 group-hover:text-accent-300">{{ feature.title }}</h3>
-              <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/70 whitespace-nowrap flex-shrink-0 transition-all duration-500 group-hover:border-accent-500/30 group-hover:bg-accent-500/10 group-hover:text-accent-300">
+            <div class="pointer-events-none absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_80%_20%,rgba(127,95,255,0.3),transparent_42%)]"></div>
+            <div class="relative flex items-start justify-between gap-2 pb-2 border-b border-white/10 transition-colors duration-500 group-hover:border-white/20">
+              <h3 class="text-base font-semibold text-white leading-tight flex-1 transition-colors duration-500 group-hover:text-accent-200">
+                {{ feature.title }}
+              </h3>
+              <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/70 whitespace-nowrap flex-shrink-0 transition-all duration-500 group-hover:border-accent-500/30 group-hover:bg-accent-500/10 group-hover:text-accent-200">
                 {{ feature.status }}
               </span>
             </div>
-            <p class="text-xs leading-relaxed text-white/60 text-pretty break-words flex-1 transition-colors duration-500 group-hover:text-white/70">
+            <p class="relative text-sm leading-relaxed text-white/60 text-pretty break-words flex-1 transition-colors duration-500 group-hover:text-white/75">
               {{ feature.description }}
             </p>
-            <div class="space-y-1 mt-auto pt-1.5">
-              <div class="flex items-center justify-between text-[0.7rem] font-medium text-white/50 transition-colors duration-500 group-hover:text-white/65">
+            <div class="relative space-y-1 mt-auto pt-1.5">
+              <div class="flex items-center justify-between text-[0.75rem] font-medium text-white/50 transition-colors duration-500 group-hover:text-white/65">
                 <span>Progress</span>
-                <span class="text-accent-400 font-semibold transition-colors duration-500 group-hover:text-accent-300">{{ feature.progress }}%</span>
+                <span class="text-accent-300 font-semibold transition-colors duration-500 group-hover:text-accent-200">{{ feature.progress }}%</span>
               </div>
               <div class="h-1 rounded-full bg-white/10 overflow-hidden transition-all duration-500 group-hover:bg-white/15">
                 <div class="h-full rounded-full bg-gradient-to-r from-accent-500 to-accent-400 transition-all duration-700 ease-out group-hover:from-accent-400 group-hover:to-accent-300 group-hover:shadow-sm group-hover:shadow-accent-400/50" :style="{ width: `${feature.progress}%` }"></div>
@@ -301,41 +400,40 @@
         <div v-else class="glass-panel rounded-3xl border border-white/10 bg-white/5 p-6 text-center text-sm text-white/60">
           Roadmap coming soon. Check back shortly!
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="faq" class="px-4">
-      <div class="mx-auto flex max-w-[1120px] flex-col gap-10">
-        <div class="flex flex-col gap-4 text-center animate-on-scroll">
-          <span class="section-label mx-auto bg-white/10 text-white/60">FAQ</span>
-          <h2 class="font-display text-3xl text-white sm:text-4xl">All the details before you drop into queue</h2>
-        </div>
+      <section id="faq" class="relative animate-on-scroll">
+        <div class="mx-auto flex max-w-[1180px] flex-col gap-10">
+          <div class="flex flex-col gap-4 text-center">
+            <span class="section-label mx-auto bg-white/5 text-white/70">FAQ</span>
+            <h2 class="font-display text-3xl text-white sm:text-4xl">All the details before you drop into queue</h2>
+          </div>
           <div class="grid items-start gap-4 md:grid-cols-2">
             <div
               v-for="(faq, index) in faqs"
               :key="faq.question"
-              class="glass-panel glass-panel--static glass-panel--loose rounded-xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-white/20 hover:scale-[1.02] animate-on-scroll"
+              class="glass-panel glass-panel--static glass-panel--loose rounded-xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-6 transition-all duration-300 hover:border-accent-500/30 hover:scale-[1.02]"
               :style="`transition-delay: ${index * 0.1}s`"
             >
               <button
                 type="button"
                 class="flex w-full items-start justify-between gap-4 text-left"
-              :aria-expanded="isFaqOpen(index)"
-              :aria-controls="`faq-panel-${index}`"
-              @click="toggleFaq(index)"
-              @keydown.enter.prevent="toggleFaq(index)"
-              @keydown.space.prevent="toggleFaq(index)"
-            >
-              <span class="text-base font-semibold text-white">{{ faq.question }}</span>
-              <span class="mt-1 text-white/40">
-                <svg v-if="isFaqOpen(index)" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <svg v-else class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-            </button>
+                :aria-expanded="isFaqOpen(index)"
+                :aria-controls="`faq-panel-${index}`"
+                @click="toggleFaq(index)"
+                @keydown.enter.prevent="toggleFaq(index)"
+                @keydown.space.prevent="toggleFaq(index)"
+              >
+                <span class="text-base font-semibold text-white">{{ faq.question }}</span>
+                <span class="mt-1 text-white/40">
+                  <svg v-if="isFaqOpen(index)" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <svg v-else class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </button>
               <Transition
                 enter-active-class="duration-[1200ms] transition-all ease-[cubic-bezier(0.16,1,0.3,1)]"
                 enter-from-class="max-h-0 opacity-0"
@@ -343,19 +441,20 @@
                 leave-active-class="duration-450 transition-all ease-[cubic-bezier(0.4,0,0.2,1)]"
                 leave-from-class="max-h-[320px] opacity-100"
                 leave-to-class="max-h-0 opacity-0"
-            >
-              <div
-                v-if="isFaqOpen(index)"
-                :id="`faq-panel-${index}`"
-                class="mt-4 max-h-[320px] overflow-hidden text-sm text-white/60"
               >
-                {{ faq.answer }}
-              </div>
-            </Transition>
+                <div
+                  v-if="isFaqOpen(index)"
+                  :id="`faq-panel-${index}`"
+                  class="mt-4 max-h-[320px] overflow-hidden text-sm text-white/65"
+                >
+                  {{ faq.answer }}
+                </div>
+              </Transition>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 </template>
 
@@ -370,7 +469,18 @@ import { scrollToHash } from '@/scripts/scrollTo'
 import { useClientMeta } from '@/composables/useClientMeta'
 import { useDevRoadmap } from '@/composables/useDevRoadmap'
 import { useScrollReveal } from '@/composables/useScrollReveal'
-import { Check, MonitorSmartphone, Music, GlobeLock, ShieldCheck, UserRoundPen } from 'lucide-vue-next'
+import {
+  ArrowUpRight,
+  Check,
+  Download,
+  GlobeLock,
+  MonitorSmartphone,
+  Music,
+  RadioTower,
+  ShieldCheck,
+  Sparkles,
+  UserRoundPen
+} from 'lucide-vue-next'
 
 const runtimeConfig = useRuntimeConfig()
 const { data: clientMeta } = useClientMeta()
@@ -378,7 +488,8 @@ const { data: devRoadmap } = useDevRoadmap()
 
 const downloadUrl = computed(() => clientMeta.value?.updatelink ?? (runtimeConfig.public.downloadUrl as string))
 const discordUrl = computed(() => clientMeta.value?.discord ?? (runtimeConfig.public.discordUrl as string))
-const versionLabel = computed(() => clientMeta.value?.latestversion ? `Version ${clientMeta.value.latestversion}` : 'Version 5.0'
+const versionLabel = computed(() =>
+  clientMeta.value?.latestversion ? `Build ${clientMeta.value.latestversion}` : 'Build 5.0'
 )
 
 const roadmapFeatures = computed(() => devRoadmap.value?.features ?? [])
@@ -408,9 +519,7 @@ const featureHighlights = [
     description:
       'Link Spotify straight into the client so sessions broadcast what you are listening to alongside your gameplay.',
     icon: Music,
-    points: [
-      'Native controls expose track, artist and playback state without leaving the HUD.'
-    ]
+    points: ['Native controls expose track, artist and playback state without leaving the HUD.']
   },
   {
     title: 'Profile System',
@@ -427,28 +536,21 @@ const featureHighlights = [
     description:
       'Optimize network performance with automatic socket tuning and adaptive packet scheduling.',
     icon: GlobeLock,
-    points: [
-      'Auto-adjusts buffers and TCP windows for better responsiveness.',
-      'Aggressive presets for competitive gameplay.'
-    ]
+    points: ['Auto-adjusts buffers and TCP windows for better responsiveness.', 'Aggressive presets for competitive gameplay.']
   },
   {
     title: 'Security Shield',
     description:
       'Hardening layer that patches legacy Minecraft vulnerabilities and guards against malicious packets.',
     icon: ShieldCheck,
-    points: [
-      'Runtime checks neutralise known crash exploits and remote code execution chains.'
-    ]
+    points: ['Runtime checks neutralise known crash exploits and remote code execution chains.']
   },
   {
     title: 'Multi-platform Support',
     description:
       'Unified launcher experience across Windows, macOS and Linux with native rendering paths.',
     icon: MonitorSmartphone,
-    points: [
-      'Automatic updates deliver identical builds no matter where you login.'
-    ]
+    points: ['Automatic updates deliver identical builds no matter where you login.']
   }
 ] satisfies FeatureHighlight[]
 
@@ -482,7 +584,6 @@ const showcaseSlides = [
     alt: 'Dynamic launcher backgrounds'
   }
 ] as const
-
 
 const upgradeSteps = [
   '1. Download the latest manifest.',
@@ -567,12 +668,12 @@ onMounted(() => {
 onBeforeUnmount(stopCarousel)
 
 useSeoMeta({
-  title: 'ShindoClient — Modern Minecraft 1.8.9 Client',
+  title: 'ShindoClient - Modern Minecraft 1.8.9 Client',
   description:
-    'Experience ShindoClient, a Modern Minecraft 1.8.9 client with secure Tons of mods & customizations, modular HUD and performance upgrades.',
-  ogTitle: 'ShindoClient — Modern Minecraft 1.8.9 Client',
+    'Experience ShindoClient, a modern Minecraft 1.8.9 client with secure mods & customizations, modular HUD and performance upgrades.',
+  ogTitle: 'ShindoClient - Modern Minecraft 1.8.9 Client',
   ogDescription:
-    'Modular UI and Modern visuals. Download ShindoClient for a premium 1.8.9 experience.',
+    'Modular UI and modern visuals. Download ShindoClient for a premium 1.8.9 experience.',
   ogImage: '/embed.png',
   ogUrl: 'https://shindoclient.com',
   twitterCard: 'summary_large_image'
@@ -589,7 +690,7 @@ useHead({
             '@type': 'SoftwareApplication',
             name: 'ShindoClient',
             description:
-              'A modern, open-source Minecraft 1.8.9 PvP client with an modern design, security-focused architecture and cross-platform support.',
+              'A modern, open-source Minecraft 1.8.9 PvP client with a modern design, security-focused architecture and cross-platform support.',
             url: 'https://shindoclient.com',
             downloadUrl: downloadUrl.value,
             applicationCategory: ['GameApplication', 'EntertainmentApplication'],

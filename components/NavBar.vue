@@ -5,11 +5,11 @@
     :class="{ 'scrolled': isScrolled }"
   >
     <nav
-      class="glass-panel glass-panel--static flex w-full max-w-[1120px] items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:px-7"
+      class="glass-panel glass-panel--static flex w-full max-w-[1120px] items-center justify-between gap-6 rounded-3xl border border-white/10 bg-gradient-to-r from-[#0f122b]/85 via-[#0c1024]/85 to-[#050611]/85 px-5 py-3 shadow-[0_25px_80px_-50px_rgba(127,95,255,0.55)] backdrop-blur-2xl transition-all duration-500 hover:border-accent-500/35 md:px-7"
       :class="{ 'nav-scrolled': isScrolled }"
     >
       <NuxtLink to="/" class="flex items-center gap-3 text-sm font-semibold tracking-wide text-white/80 transition-all duration-300 hover:text-white hover:scale-105">
-        <img :src="logo" alt="ShindoClient logo" class="h-9 w-9 rounded-xl border border-white/10 bg-white/10 p-1.5 transition-transform duration-300 hover:rotate-6" />
+        <img :src="logo" alt="ShindoClient logo" class="h-9 w-9 rounded-xl border border-accent-500/30 bg-white/10 p-1.5 shadow-[0_10px_35px_-20px_rgba(127,95,255,0.7)] transition-transform duration-300 hover:rotate-6" />
         <div class="flex flex-col leading-tight">
           <span class="font-display text-base uppercase tracking-[0.3em] text-white/70 transition-colors duration-300">ShindoClient</span>
           <span v-if="versionLabel" class="text-[10px] font-medium uppercase tracking-[0.35em] text-white/40">
@@ -23,21 +23,20 @@
           v-for="item in primaryLinks"
           :key="item.label"
           type="button"
-          class="nav-link rounded-full px-4 py-2 transition-all duration-300 hover:bg-white/10 hover:text-white"
+          class="nav-link rounded-full px-4 py-2 transition-all duration-300 hover:bg-accent-500/10 hover:text-white hover:shadow-[0_10px_40px_-20px_rgba(127,95,255,0.6)]"
           @click="navigate(item.hash)"
         >
           {{ item.label }}
         </button>
         <NuxtLink
           to="/download"
-          class="button-ghost ml-1 text-xs uppercase tracking-widest"
+          class="button-ghost ml-1 text-xs uppercase tracking-widest border-accent-500/25 bg-accent-500/10 hover:border-accent-500/40 hover:bg-accent-500/20"
         >
           Download
         </NuxtLink>
         <NuxtLink
-          :to="discordHref"
-          target="_blank"
-          class="button-primary text-xs uppercase tracking-widest"
+          to="/discord"
+          class="button-primary text-xs uppercase tracking-widest bg-gradient-to-r from-accent-500 via-accent-600 to-[#2D1B69] shadow-[0_20px_60px_-35px_rgba(127,95,255,0.75)]"
         >
           Discord
         </NuxtLink>
@@ -89,27 +88,27 @@
     >
       <div
         v-if="menu"
-        class="absolute top-[88px] w-full max-w-[1120px] rounded-3xl border border-white/10 bg-surface/95 p-4 shadow-xl shadow-black/40 backdrop-blur-xl md:hidden"
+        class="absolute top-[88px] w-full max-w-[1120px] rounded-3xl border border-white/10 bg-gradient-to-br from-[#0f122b]/92 via-[#0c1024]/92 to-[#050611]/95 p-4 shadow-xl shadow-black/40 backdrop-blur-2xl md:hidden"
       >
         <div class="flex flex-col gap-2 text-sm font-medium text-white/70">
           <button
             v-for="item in primaryLinks"
             :key="`mobile-${item.label}`"
             type="button"
-            class="rounded-2xl bg-white/5 px-4 py-3 text-left transition hover:bg-white/10 hover:text-white"
+            class="rounded-2xl bg-white/5 px-4 py-3 text-left transition hover:bg-accent-500/15 hover:text-white"
             @click="navigate(item.hash)"
           >
             {{ item.label }}
           </button>
         </div>
         <div class="mt-4 grid gap-2">
-          <NuxtLink to="/download" class="button-ghost w-full justify-center text-xs uppercase tracking-[0.25em]" @click="close">
+          <NuxtLink to="/download" class="button-ghost w-full justify-center text-xs uppercase tracking-[0.25em] border-accent-500/25 bg-accent-500/10 hover:border-accent-500/40 hover:bg-accent-500/20" @click="close">
             Download
           </NuxtLink>
           <NuxtLink
             :to="discordHref"
             target="_blank"
-            class="button-primary w-full justify-center text-xs uppercase tracking-[0.25em]"
+            class="button-primary w-full justify-center text-xs uppercase tracking-[0.25em] bg-gradient-to-r from-accent-500 via-accent-600 to-[#2D1B69]"
             @click="close"
           >
             Discord
@@ -195,8 +194,8 @@ async function navigate(hash: string) {
 
 .nav-scrolled {
   box-shadow: 0 8px 32px -8px rgba(10, 18, 46, 0.6) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(127, 95, 255, 0.35) !important;
+  background: linear-gradient(90deg, rgba(15, 18, 43, 0.9), rgba(12, 15, 36, 0.9), rgba(5, 6, 17, 0.92)) !important;
 }
 
 /* Animações suaves nos botões de navegação */
