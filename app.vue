@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import '@fuzzycanary/core/auto'
 import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 import { Analytics } from '@vercel/analytics/nuxt'
+
 import { onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 
