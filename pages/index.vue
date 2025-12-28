@@ -269,7 +269,7 @@
             <h2 class="font-display text-3xl text-white sm:text-4xl">Help us keep the project alive</h2>
           </div>
           <div
-            class="support-card glass-panel group mx-auto w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-[#0b0f24]/80 p-6 shadow-lg shadow-black/20 transition-all duration-300 backdrop-blur-2xl lg:flex lg:flex-row lg:gap-8 lg:p-8 hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
+            class="support-card glass-panel group mx-auto w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-[#0b0f24]/80 p-6 shadow-lg shadow-black/20 transition-all duration-300 backdrop-blur-2xl lg:flex lg:flex-row lg:items-start lg:gap-8 lg:p-8 hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
           >
             <div class="flex flex-1 flex-col gap-4">
               <div class="flex items-center gap-3">
@@ -337,17 +337,18 @@
                 </li>
               </ol>
             </div>
-            <div class="flex-1 rounded-xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-2 shadow-inner shadow-black/30 lg:max-w-md">
-              <div class="overflow-hidden rounded-lg border border-white/10 bg-surface-elevated/40">
-                <iframe
-                  id="kofiframe"
-                  src="https://ko-fi.com/mikidevahm/?hidefeed=true&widget=true&embed=true&preview=true"
-                  style="border:0;width:100%;padding:0;background:transparent;"
-                  height="500"
-                  title="mikidevahm"
-                  loading="lazy"
-                  class="w-full"
-                ></iframe>
+            <div class="flex flex-1 items-center justify-center p-2 lg:mt-auto lg:max-w-xs lg:self-end">
+              <div class="relative flex flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a1f3d]/70 via-[#0f142c]/80 to-[#0a0e24]/90 px-10 py-9 shadow-lg shadow-black/30">
+                <div class="pointer-events-none absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_30%_20%,rgba(127,95,255,0.2),transparent_55%)]"></div>
+                <div class="relative flex h-40 w-40 items-center justify-center rounded-full border border-white/10 bg-white/5 sm:h-44 sm:w-44">
+                  <img src="/logo.png" alt="ShindoClient logo" class="relative h-28 w-auto sm:h-32" loading="lazy" />
+                </div>
+                <span class="relative rounded-full border border-white/15 bg-white/5 px-5 py-1.5 text-base font-semibold tracking-wide text-white sm:text-lg">
+                  Shindo Client
+                </span>
+                <a href='https://ko-fi.com/R6R81OOSZD' target='_blank'>
+                  <img class='h-9 w-auto border-0 sm:h-10' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' alt='Buy Me a Coffee at ko-fi.com' />
+                </a>
               </div>
             </div>
           </div>
