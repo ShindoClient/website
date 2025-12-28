@@ -137,8 +137,8 @@ watch(open, () => nextTick(measure))
 }
 .faq-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(133, 57, 255, 0.15);
-  border-color: rgba(133, 57, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(127, 95, 255, 0.15);
+  border-color: rgba(127, 95, 255, 0.3);
 }
 
 .faq-question {
@@ -157,7 +157,7 @@ watch(open, () => nextTick(measure))
   transition: all 0.3s ease;
   position: relative;
 }
-.faq-question:hover { color: var(--primary); background-color: rgba(133, 57, 255, 0.05); }
+.faq-question:hover { color: var(--primary); background-color: rgba(127, 95, 255, 0.05); }
 .faq-question::before {
   content: '';
   position: absolute; left: 0; top: 0; height: 100%; width: 4px;
@@ -168,7 +168,7 @@ watch(open, () => nextTick(measure))
 
 .faq-icon { transition: transform 0.3s ease; flex-shrink: 0; margin-left: 1rem; stroke: var(--text); }
 .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(180deg); stroke: var(--primary); }
-.faq-question[aria-expanded="true"] { color: var(--primary); background-color: rgba(133, 57, 255, 0.08); }
+.faq-question[aria-expanded="true"] { color: var(--primary); background-color: rgba(127, 95, 255, 0.08); }
 .faq-question[aria-expanded="true"]::before { transform: scaleY(1); }
 
 /* container da resposta continua animando height */

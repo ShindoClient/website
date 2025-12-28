@@ -3,13 +3,13 @@
     <div class="pointer-events-none absolute inset-0 -z-10">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(127,95,255,0.14),transparent_42%),radial-gradient(circle_at_88%_8%,rgba(45,27,105,0.24),transparent_36%),linear-gradient(180deg,rgba(7,9,20,0.92),rgba(5,7,15,0.96))]"></div>
       <div class="absolute left-6 top-10 h-24 w-24 rounded-full bg-accent-500/25 blur-3xl"></div>
-      <div class="absolute right-0 top-24 h-28 w-28 rounded-full bg-[#2D1B69]/35 blur-[90px]"></div>
+      <div class="absolute right-0 top-24 h-28 w-28 rounded-full bg-accent-900/35 blur-[90px]"></div>
       <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
     </div>
 
     <div class="mx-auto max-w-[1120px] space-y-10">
       <section
-        class="glass-panel relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#0f1128]/90 via-[#0a0d1f]/90 to-[#050611]/90 p-8 shadow-[0_40px_120px_-70px_rgba(7,8,20,0.9)] backdrop-blur-3xl animate-on-scroll md:p-12"
+        class="glass-panel relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-surface-soft/90 via-surface-soft-2/90 to-surface/90 p-8 shadow-[0_40px_120px_-70px_rgba(7,8,20,0.9)] backdrop-blur-3xl animate-on-scroll md:p-12"
       >
         <div
           class="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(circle_at_20%_20%,rgba(162,107,255,0.18),transparent_50%),radial-gradient(circle_at_82%_15%,rgba(95,74,255,0.16),transparent_45%),linear-gradient(135deg,rgba(45,27,105,0.35),rgba(5,6,18,0.8))]"
@@ -39,7 +39,7 @@
               <a
                 :href="downloadHref"
                 target="_blank"
-                class="button-primary group w-full justify-center bg-gradient-to-r from-accent-500 via-accent-600 to-[#2D1B69] text-sm font-semibold shadow-[0_24px_80px_-40px_rgba(127,95,255,0.8)] sm:w-auto"
+                class="button-primary group w-full justify-center bg-gradient-to-r from-accent-500 via-accent-600 to-accent-900 text-sm font-semibold shadow-[0_24px_80px_-40px_rgba(127,95,255,0.8)] sm:w-auto"
               >
                 <Download class="h-4 w-4" />
                 <span>Download Manifest</span>
@@ -73,7 +73,7 @@
 
       <section class="grid gap-5 md:grid-cols-2">
         <div
-          class="info-card glass-panel group relative h-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-[#0b0f24]/70 p-6 shadow-lg shadow-black/25 transition-all duration-500 animate-on-scroll hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
+          class="info-card glass-panel group relative h-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-surface-elevated/70 p-6 shadow-lg shadow-black/25 transition-all duration-500 animate-on-scroll hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
         >
           <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_15%_20%,rgba(162,107,255,0.4),transparent_40%)]"></div>
           <div class="relative flex flex-col gap-4">
@@ -128,7 +128,7 @@
         </div>
 
         <div
-          class="info-card glass-panel group relative h-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-[#0b0f24]/70 p-6 shadow-lg shadow-black/25 transition-all duration-500 animate-on-scroll hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
+          class="info-card glass-panel group relative h-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-surface-elevated/70 p-6 shadow-lg shadow-black/25 transition-all duration-500 animate-on-scroll hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
         >
           <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_85%_20%,rgba(127,95,255,0.4),transparent_42%)]"></div>
           <div class="relative flex flex-col gap-4">

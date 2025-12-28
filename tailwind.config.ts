@@ -17,8 +17,25 @@ export default {
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
       },
       colors: {
-        surface: '#050712',
-        'surface-elevated': '#0b0f20',
+        surface: {
+          DEFAULT: '#050611',
+          deep: '#060711',
+          panel: '#0f122b',
+          'panel-2': '#0c1024',
+          'panel-3': '#0c0f26',
+          'panel-4': '#0c1026',
+          card: '#11142f',
+          muted: '#0b0f20',
+          'muted-2': '#090c1a',
+          elevated: '#0b0f24',
+          soft: '#0f1128',
+          'soft-2': '#0a0d1f',
+          'soft-3': '#0a0e24',
+          shadow: '#090c1e',
+          subtle: '#0f142c',
+          'subtle-2': '#0f1530',
+          glow: '#1a1f3d'
+        },
         accent: {
           50: '#f3e9ff',
           100: '#ead8ff',
@@ -29,7 +46,7 @@ export default {
           600: '#5a3ef7',
           700: '#432bd3',
           800: '#3021a5',
-          900: '#211873'
+          900: '#2D1B69'
         },
         success: '#14cc8a',
         warning: '#f5a524'

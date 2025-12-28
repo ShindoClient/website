@@ -5,7 +5,7 @@
     :class="{ 'scrolled': isScrolled }"
   >
     <nav
-      class="glass-panel glass-panel--static flex w-full max-w-[1120px] items-center justify-between gap-6 rounded-3xl border border-white/10 bg-gradient-to-r from-[#0f122b]/85 via-[#0c1024]/85 to-[#050611]/85 px-5 py-3 shadow-[0_25px_80px_-50px_rgba(127,95,255,0.55)] backdrop-blur-2xl transition-all duration-500 hover:border-accent-500/35 md:px-7"
+      class="glass-panel glass-panel--static flex w-full max-w-[1120px] items-center justify-between gap-6 rounded-3xl border border-white/10 bg-gradient-to-r from-surface-panel/85 via-surface-panel-2/85 to-surface/85 px-5 py-3 shadow-[0_25px_80px_-50px_rgba(127,95,255,0.55)] backdrop-blur-2xl transition-all duration-500 hover:border-accent-500/35 md:px-7"
       :class="{ 'nav-scrolled': isScrolled }"
     >
       <NuxtLink to="/" class="flex items-center gap-3 text-sm font-semibold tracking-wide text-white/80 transition-all duration-300 hover:text-white hover:scale-105">
@@ -36,7 +36,7 @@
         </NuxtLink>
         <NuxtLink
           to="/discord"
-          class="button-primary text-xs uppercase tracking-widest bg-gradient-to-r from-accent-500 via-accent-600 to-[#2D1B69] shadow-[0_20px_60px_-35px_rgba(127,95,255,0.75)]"
+          class="button-primary text-xs uppercase tracking-widest bg-gradient-to-r from-accent-500 via-accent-600 to-accent-900 shadow-[0_20px_60px_-35px_rgba(127,95,255,0.75)]"
         >
           Discord
         </NuxtLink>
@@ -88,7 +88,7 @@
     >
       <div
         v-if="menu"
-        class="absolute top-[88px] w-full max-w-[1120px] rounded-3xl border border-white/10 bg-gradient-to-br from-[#0f122b]/92 via-[#0c1024]/92 to-[#050611]/95 p-4 shadow-xl shadow-black/40 backdrop-blur-2xl md:hidden"
+        class="absolute top-[88px] w-full max-w-[1120px] rounded-3xl border border-white/10 bg-gradient-to-br from-surface-panel/92 via-surface-panel-2/92 to-surface/95 p-4 shadow-xl shadow-black/40 backdrop-blur-2xl md:hidden"
       >
         <div class="flex flex-col gap-2 text-sm font-medium text-white/70">
           <button
@@ -108,7 +108,7 @@
           <NuxtLink
             :to="discordHref"
             target="_blank"
-            class="button-primary w-full justify-center text-xs uppercase tracking-[0.25em] bg-gradient-to-r from-accent-500 via-accent-600 to-[#2D1B69]"
+            class="button-primary w-full justify-center text-xs uppercase tracking-[0.25em] bg-gradient-to-r from-accent-500 via-accent-600 to-accent-900"
             @click="close"
           >
             Discord

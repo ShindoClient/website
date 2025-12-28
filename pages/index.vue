@@ -6,13 +6,13 @@
       ></div>
       <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
       <div class="absolute left-[6%] top-12 h-24 w-24 rounded-full bg-accent-500/25 blur-[90px]"></div>
-      <div class="absolute right-[8%] top-24 h-28 w-28 rounded-full bg-[#2D1B69]/30 blur-[100px]"></div>
+      <div class="absolute right-[8%] top-24 h-28 w-28 rounded-full bg-accent-900/30 blur-[100px]"></div>
     </div>
 
     <div class="mx-auto flex max-w-[1180px] flex-col gap-16 lg:gap-20">
       <section
         id="hero"
-        class="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#11142f]/90 via-[#0c0f26]/92 to-[#050611]/92 p-8 shadow-[0_40px_120px_-70px_rgba(7,8,20,0.9)] backdrop-blur-3xl animate-on-scroll lg:p-12"
+        class="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-surface-card/90 via-surface-panel-3/92 to-surface/92 p-8 shadow-[0_40px_120px_-70px_rgba(7,8,20,0.9)] backdrop-blur-3xl animate-on-scroll lg:p-12"
       >
         <div
           class="pointer-events-none absolute inset-0 opacity-80 [background:radial-gradient(circle_at_22%_22%,rgba(162,107,255,0.18),transparent_48%),radial-gradient(circle_at_78%_18%,rgba(95,74,255,0.16),transparent_48%),linear-gradient(135deg,rgba(45,27,105,0.35),rgba(5,6,18,0.85))]"
@@ -56,7 +56,7 @@
             <div class="flex flex-wrap items-center gap-3">
               <NuxtLink
                 :to="downloadUrl"
-                class="button-primary group bg-gradient-to-r from-accent-500 via-accent-600 to-[#2D1B69] text-sm font-semibold shadow-[0_24px_80px_-40px_rgba(127,95,255,0.8)]"
+                class="button-primary group bg-gradient-to-r from-accent-500 via-accent-600 to-accent-900 text-sm font-semibold shadow-[0_24px_80px_-40px_rgba(127,95,255,0.8)]"
               >
                 <Download class="h-4 w-4" />
                 <span>Download</span>
@@ -83,7 +83,7 @@
           <div
             class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-6 shadow-[0_25px_90px_-45px_rgba(127,95,255,0.4)] backdrop-blur-2xl"
           >
-            <div class="absolute inset-0 opacity-40 blur-3xl bg-gradient-to-br from-accent-500/25 via-transparent to-[#2D1B69]/30"></div>
+            <div class="absolute inset-0 opacity-40 blur-3xl bg-gradient-to-br from-accent-500/25 via-transparent to-accent-900/30"></div>
             <div class="relative flex flex-col gap-4">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -95,7 +95,7 @@
                 </span>
               </div>
               <div
-                class="relative flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a1f3d]/70 via-[#0f142c]/80 to-[#0a0e24]/90 p-8 shadow-lg shadow-black/30"
+                class="relative flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface-glow/70 via-surface-subtle/80 to-surface-soft-3/90 p-8 shadow-lg shadow-black/30"
               >
                 <div class="pointer-events-none absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_30%_20%,rgba(127,95,255,0.25),transparent_45%)]"></div>
                 <img
@@ -136,7 +136,7 @@
           <div
             v-for="(feature, index) in featureHighlights"
             :key="feature.title"
-            class="feature-card group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0c1024]/70 via-[#0b0f20]/70 to-[#090c1a]/80 p-5 shadow-lg shadow-black/30 transition-all duration-500 ease-out animate-on-scroll hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-[0_25px_80px_-50px_rgba(127,95,255,0.7)]"
+            class="feature-card group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface-panel-2/70 via-surface-muted/70 to-surface-muted-2/80 p-5 shadow-lg shadow-black/30 transition-all duration-500 ease-out animate-on-scroll hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-[0_25px_80px_-50px_rgba(127,95,255,0.7)]"
             :style="`transition-delay: ${index * 0.1}s`"
           >
             <div class="pointer-events-none absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(162,107,255,0.35),transparent_38%)]"></div>
@@ -186,7 +186,7 @@
         </div>
 
         <div
-          class="glass-panel glass-panel--static relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#0c1026]/85 via-[#090c1e]/85 to-[#060711]/92 p-0 shadow-[0_45px_120px_-70px_rgba(10,18,46,0.9)] animate-on-scroll"
+          class="glass-panel glass-panel--static relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-surface-panel-4/85 via-surface-shadow/85 to-surface-deep/92 p-0 shadow-[0_45px_120px_-70px_rgba(10,18,46,0.9)] animate-on-scroll"
           @mouseenter="stopCarousel"
           @mouseleave="startCarousel"
           role="region"
@@ -229,7 +229,7 @@
 
             <button
               type="button"
-              class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-[#0b0f20]/80 p-3 text-white transition-all duration-300 hover:border-accent-500/40 hover:bg-[#0f1530]/90 hover:scale-110 active:scale-95"
+              class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-surface-muted/80 p-3 text-white transition-all duration-300 hover:border-accent-500/40 hover:bg-surface-subtle-2/90 hover:scale-110 active:scale-95"
               aria-label="Show previous slide"
               @click="prevSlide(); restartCarousel()"
             >
@@ -239,7 +239,7 @@
             </button>
             <button
               type="button"
-              class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-[#0b0f20]/80 p-3 text-white transition-all duration-300 hover:border-accent-500/40 hover:bg-[#0f1530]/90 hover:scale-110 active:scale-95"
+              class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-surface-muted/80 p-3 text-white transition-all duration-300 hover:border-accent-500/40 hover:bg-surface-subtle-2/90 hover:scale-110 active:scale-95"
               aria-label="Show next slide"
               @click="nextSlide(); restartCarousel()"
             >
@@ -269,7 +269,7 @@
             <h2 class="font-display text-3xl text-white sm:text-4xl">Help us keep the project alive</h2>
           </div>
           <div
-            class="support-card glass-panel group mx-auto w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-[#0b0f24]/80 p-6 shadow-lg shadow-black/20 transition-all duration-300 backdrop-blur-2xl lg:flex lg:flex-row lg:items-start lg:gap-8 lg:p-8 hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
+            class="support-card glass-panel group mx-auto w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-surface-elevated/80 p-6 shadow-lg shadow-black/20 transition-all duration-300 backdrop-blur-2xl lg:flex lg:flex-row lg:items-start lg:gap-8 lg:p-8 hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)]"
           >
             <div class="flex flex-1 flex-col gap-4">
               <div class="flex items-center gap-3">
@@ -338,7 +338,7 @@
               </ol>
             </div>
             <div class="flex flex-1 items-center justify-center p-2 lg:mt-auto lg:max-w-xs lg:self-end">
-              <div class="relative flex flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a1f3d]/70 via-[#0f142c]/80 to-[#0a0e24]/90 px-10 py-9 shadow-lg shadow-black/30">
+              <div class="relative flex flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface-glow/70 via-surface-subtle/80 to-surface-soft-3/90 px-10 py-9 shadow-lg shadow-black/30">
                 <div class="pointer-events-none absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_30%_20%,rgba(127,95,255,0.2),transparent_55%)]"></div>
                 <div class="relative flex h-40 w-40 items-center justify-center rounded-full border border-white/10 bg-white/5 sm:h-44 sm:w-44">
                   <img src="/logo.png" alt="ShindoClient logo" class="relative h-28 w-auto sm:h-32" loading="lazy" />
@@ -372,7 +372,7 @@
           <article
             v-for="(feature, index) in roadmapFeatures"
             :key="feature.id"
-            class="roadmap-card group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0c1024]/70 via-[#0b0f20]/70 to-[#090c1a]/80 p-5 shadow-lg shadow-black/30 transition-all duration-500 ease-out animate-on-scroll hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-[0_25px_80px_-50px_rgba(127,95,255,0.7)]"
+            class="roadmap-card group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface-panel-2/70 via-surface-muted/70 to-surface-muted-2/80 p-5 shadow-lg shadow-black/30 transition-all duration-500 ease-out animate-on-scroll hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-[0_25px_80px_-50px_rgba(127,95,255,0.7)]"
             :style="`transition-delay: ${index * 0.1}s`"
           >
             <div class="pointer-events-none absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_80%_20%,rgba(127,95,255,0.3),transparent_42%)]"></div>

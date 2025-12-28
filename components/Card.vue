@@ -92,8 +92,8 @@ onMounted(() => {
   width: 150px;
   height: 150px;
   background: radial-gradient(circle,
-    rgba(102, 3, 252, 0.30) 0%,
-    rgba(102, 3, 252, 0.10) 40%,
+    rgba(127, 95, 255, 0.30) 0%,
+    rgba(127, 95, 255, 0.10) 40%,
     transparent 70%
   );
   border-radius: 50%;
@@ -108,7 +108,7 @@ onMounted(() => {
 /* Levanta e dá leve zoom no hover */
 .card:hover {
   transform: translateY(-5px) scale(1.05) !important;
-  box-shadow: 0 20px 30px rgba(102, 3, 252, 0.15);
+  box-shadow: 0 20px 30px rgba(127, 95, 255, 0.15);
 }
 
 .card:hover::before {

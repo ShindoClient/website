@@ -5,6 +5,12 @@
 @layer base {
   :root {
     color-scheme: dark;
+    --primary: theme('colors.accent.500');
+    --primary-secondary: theme('colors.accent.600');
+    --secondary: theme('colors.accent.200');
+    --text: rgba(255, 255, 255, 0.78);
+    --bg-card: theme('colors.surface.elevated');
+    --bg-dark: theme('colors.surface.DEFAULT');
   }
 
   html {
