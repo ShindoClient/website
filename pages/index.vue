@@ -594,6 +594,11 @@ const upgradeSteps = [
 
 const faqs = [
   {
+    question: 'is ShindoClient safe to use?',
+    answer:
+      'Yes. ShindoClient is open source and the source code is available on GitHub. No malicious code is shipped and the client is built with security in mind.'
+  },
+  {
     question: 'Is ShindoClient legal on major networks?',
     answer:
       'Yes. ShindoClient focuses on performance optimisations, QoL modules and visuals. No unfair combat advantages are shipped by default and key systems are hot-pluggable to comply with server rules.'
@@ -612,6 +617,21 @@ const faqs = [
     question: 'Where can I get support or report issues?',
     answer:
       'Hop into the Discord to share logs, request features or escalate bugs directly with maintainers. GitHub issues stay open for reproducible defects and community contributions.'
+  },
+  {
+    question: "Is ShindoClient free?",
+    answer:
+      'Yes! ShindoClient is free to use and open-source. We are committed to transparency and community support.'
+  },
+  {
+    question: 'Can I Install mods?',
+    answer:
+      'Currently no, but we will be happy to consider mods you suggest to us on github or discord.'
+  },
+  {
+    question: 'Can I contribute to the project?',
+    answer:
+      'Absolutely! ShindoClient is an open-source project driven by community contributions. Whether you\'re a developer, designer, or tester, your help is invaluable in shaping the future of the client.'
   }
 ]
 
