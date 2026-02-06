@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@fuzzycanary/core": "^0.2.2",
-    "@shindo/styles": "file:../../shindo-styles",
+    "@shindo/styles": "file:./vendor/shindo-styles",
     "@tailwindcss/vite": "^4.1.13",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
