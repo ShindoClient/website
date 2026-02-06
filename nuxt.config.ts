@@ -4,7 +4,7 @@ export default defineNuxtConfig({
         typeCheck: true,
         shim: false
     },
-    css: ['~/assets/css/tailwind.css'],
+    css: ['~/assets/scss/main.scss'],
     postcss: {
         plugins: {
             tailwindcss: {},
