@@ -13,7 +13,9 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            clientMetaUrl: process.env.NUXT_PUBLIC_CLIENT_META_URL || 'https://cdn.shindoclient.com/data/meta/client.json',
+            clientMetaUrl: process.env.NUXT_PUBLIC_CLIENT_META_URL || 'https://cdn.shindoclient.com/data/meta/versioning.json',
+            versioningMetaUrl: process.env.NUXT_PUBLIC_VERSIONING_META_URL || 'https://cdn.shindoclient.com/data/meta/versioning.json',
+            legacyClientMetaUrl: process.env.NUXT_PUBLIC_LEGACY_CLIENT_META_URL || 'https://cdn.shindoclient.com/data/meta/client.json',
             devMetaUrl: process.env.NUXT_PUBLIC_DEV_META_URL || 'https://cdn.shindoclient.com/data/meta/dev.json',
             downloadUrl: process.env.NUXT_PUBLIC_DOWNLOAD_URL || 'https://github.com/ShindoClient/shindo-client/releases/latest',
             launcherUrl: process.env.NUXT_PUBLIC_LAUNCHER_URL || 'https://github.com/ShindoClient/shindo-launcher/releases/latest',
@@ -37,8 +39,6 @@ export default defineNuxtConfig({
                 { name: 'author', content: 'MikiDevAHM' },
                 { name: 'robots', content: 'index, follow' },
                 { name: 'theme-color', content: '#5a3ef7' },
-
-                // Open Graph
                 { property: 'og:type', content: 'website' },
                 { property: 'og:title', content: 'ShindoClient — Competitive 1.8.9 Minecraft Client' },
                 {
@@ -49,8 +49,6 @@ export default defineNuxtConfig({
                 { property: 'og:image:alt', content: 'ShindoClient Showcase' },
                 { property: 'og:url', content: 'https://shindoclient.com' },
                 { property: 'og:site_name', content: 'ShindoClient' },
-
-                // Twitter
                 { name: 'twitter:card', content: 'summary_large_image' },
                 { name: 'twitter:site', content: '@ShindoClient' },
                 { name: 'twitter:title', content: 'ShindoClient — Modern Minecraft Client' },
@@ -60,8 +58,6 @@ export default defineNuxtConfig({
                         'Performance tuned, Modern inspired design and seamless account sync. Elevate your Minecraft PvP with ShindoClient.'
                 },
                 { name: 'twitter:image', content: '/embed.png' },
-
-                // Google
                 { name: 'google-site-verification', content: 'n2_PSPIFSW3FK0lF6RLzFS1Yk-m3fJBrBriWdK449Xk' },
                 { name: 'google-adsense-account', content: 'ca-pub-6946729640389049' }
             ],
