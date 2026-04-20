@@ -1,0 +1,189 @@
+// ============================================
+// MAIN SCSS - Arquivo Principal
+// Integra @shindo/styles com Tailwind CSS
+// ============================================
+
+// 1. Importar biblioteca @shindo/styles primeiro
+// Isso fornece: palette, base, animations e componentes base
+@use "@shindo/styles/src/scss/main" as *;
+
+// 2. Tailwind CSS (importado depois para poder usar @apply)
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// 3. Componentes específicos do website que usam Tailwind
+// Estes componentes usam @apply e precisam vir depois do Tailwind
+@layer components {
+  // Glass Panel já está na biblioteca, mas podemos sobrescrever se necessário
+  // .glass-panel { ... }
+
+  // Section Label já está na biblioteca
+  // .section-label { ... }
+
+  // Gradient Text já está na biblioteca
+  // .gradient-text { ... }
+
+  // Button Primary já está na biblioteca
+  // .button-primary { ... }
+
+  // Button Ghost já está na biblioteca
+  // .button-ghost { ... }
+
+  // Animações de entrada (já estão na biblioteca)
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  // Cards específicos do website
+  .feature-card {
+    min-height: auto;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgb(var(--accent-500) / 0.3), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover {
+      transform: translate3d(0, -4px, 0) scale(1.01);
+      box-shadow: 0 20px 60px -30px rgb(var(--accent-600) / 0.5);
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+  }
+
+  .roadmap-card {
+    min-height: auto;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgb(var(--accent-500) / 0.3), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover {
+      transform: translate3d(0, -4px, 0) scale(1.01);
+      box-shadow: 0 20px 60px -30px rgb(var(--accent-600) / 0.5);
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+  }
+
+  // Hero section
+  .hero-container {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgb(var(--accent-500) / 0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
+
+  // Support section
+  .support-card {
+    min-height: auto;
+
+    &:hover {
+      transform: translate3d(0, -3px, 0);
+      box-shadow: 0 20px 60px -30px rgb(var(--accent-600) / 0.4);
+    }
+  }
+}
+
+// Utilities específicas do website
+@layer utilities {
+  // Grid overlay já está na biblioteca
+  // .grid-overlay { ... }
+
+  // Hover lift já está na biblioteca
+  // .hover-lift { ... }
+
+  // Gradiente animado já está na biblioteca
+  // .gradient-animated { ... }
+}
+
+// 4. Estilos específicos do Tailwind que precisam ser mantidos
+@layer base {
+  // Variáveis CSS para compatibilidade com Tailwind
+  :root {
+    --primary: theme('colors.accent.500');
+    --primary-secondary: theme('colors.accent.600');
+    --secondary: theme('colors.accent.200');
+    --text: rgba(255, 255, 255, 0.78);
+    --bg-card: theme('colors.surface.elevated');
+    --bg-dark: theme('colors.surface.DEFAULT');
+  }
+
+  // Estilos específicos do website que usam @apply
+  body {
+    @apply min-h-screen bg-surface text-white font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 20% -10%, rgb(var(--accent-500) / 0.28), transparent 60%),
+      radial-gradient(circle at 80% 0%, rgb(var(--accent-700) / 0.22), transparent 55%),
+      linear-gradient(180deg, rgba(8, 13, 33, 0.85) 0%, rgb(var(--bg) / 0.96) 45%, rgb(var(--bg)) 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  #__nuxt {
+    @apply min-h-screen flex flex-col;
+  }
+
+  ::selection {
+      background: rgb(var(--accent-600) / 0.35);
+  }
+}
