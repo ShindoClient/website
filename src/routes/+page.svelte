@@ -415,7 +415,7 @@
           <span class="section-label mx-auto bg-white/5 text-white/70">Support the project</span>
           <h2 class="font-display text-3xl text-white sm:text-4xl">Help us keep the project alive</h2>
         </div>
-        <div class="support-card glass-panel group mx-auto w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-surface-elevated/80 p-6 shadow-lg shadow-black/20 animate-on-scroll hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)] lg:flex lg:flex-row lg:items-start lg:gap-8 lg:p-8">
+        <div class="support-card glass-panel group mx-auto w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-surface-elevated/80 p-6 shadow-lg shadow-black/20 hover:border-accent-500/40 hover:shadow-[0_30px_90px_-60px_rgba(127,95,255,0.65)] lg:flex lg:flex-row lg:items-start lg:gap-8 lg:p-8">
           <div class="flex flex-1 flex-col gap-4">
             <div class="flex items-center gap-3">
               <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-accent-500/25 to-accent-600/20 text-accent-200">
