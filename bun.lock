@@ -6,7 +6,7 @@
       "name": "shindo-website",
       "dependencies": {
         "@fuzzycanary/core": "^0.2.2",
-        "@shindojs/styles": "file:../shindo-styles",
+        "@shindojs/styles": "4.0.1",
         "@sveltejs/adapter-auto": "^4.0.0",
         "@sveltejs/kit": "^2.17.1",
         "@tailwindcss/vite": "^4.1.14",
@@ -142,7 +142,7 @@
 
     "@rollup/rollup-win32-x64-msvc": ["@rollup/rollup-win32-x64-msvc@4.50.2", "", { "os": "win32", "cpu": "x64" }, "sha512-APwKy6YUhvZaEoHyM+9xqmTpviEI+9eL7LoCH+aLcvWYHJ663qG5zx7WzWZY+a9qkg5JtzcMyJ9z0WtQBMDmgA=="],
 
-    "@shindojs/styles": ["@shindojs/styles@file:../shindo-styles", { "devDependencies": { "tailwindcss": "^4.1.14", "typescript": "^5.9.3" } }],
+    "@shindojs/styles": ["@shindojs/styles@4.0.1", "", {}, "sha512-p2OykWzjtr4AFVQFuOgQ9PgbOYZeGfxGSRSgrGcjQ+zmLXD62MO9ja3dwaOBV0ysR85TPNR1VP332/Wi5zUJEQ=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
