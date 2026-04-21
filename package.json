@@ -14,7 +14,7 @@
     "@sveltejs/adapter-auto": "^4.0.0",
     "@sveltejs/kit": "^2.17.1",
     "@tailwindcss/vite": "^4.1.14",
-    "@vercel/analytics": "^1.5.0",
+    "@vercel/analytics": "^1.6.1",
     "@vercel/speed-insights": "^1.2.0",
     "lucide-svelte": "^0.553.0",
     "svelte": "^5.38.2",
